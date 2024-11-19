@@ -1,0 +1,2251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.20">
+<title>Chương 1: Kiểm soát khát vọng</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<style>
+/*! Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
+/* Uncomment the following line when using as a custom stylesheet */
+/* @import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700"; */
+html{font-family:sans-serif;-webkit-text-size-adjust:100%}
+a{background:none}
+a:focus{outline:thin dotted}
+a:active,a:hover{outline:0}
+h1{font-size:2em;margin:.67em 0}
+b,strong{font-weight:bold}
+abbr{font-size:.9em}
+abbr[title]{cursor:help;border-bottom:1px dotted #dddddf;text-decoration:none}
+dfn{font-style:italic}
+hr{height:0}
+mark{background:#ff0;color:#000}
+code,kbd,pre,samp{font-family:monospace;font-size:1em}
+pre{white-space:pre-wrap}
+q{quotes:"\201C" "\201D" "\2018" "\2019"}
+small{font-size:80%}
+sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}
+sup{top:-.5em}
+sub{bottom:-.25em}
+img{border:0}
+svg:not(:root){overflow:hidden}
+figure{margin:0}
+audio,video{display:inline-block}
+audio:not([controls]){display:none;height:0}
+fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}
+legend{border:0;padding:0}
+button,input,select,textarea{font-family:inherit;font-size:100%;margin:0}
+button,input{line-height:normal}
+button,select{text-transform:none}
+button,html input[type=button],input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer}
+button[disabled],html input[disabled]{cursor:default}
+input[type=checkbox],input[type=radio]{padding:0}
+button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}
+textarea{overflow:auto;vertical-align:top}
+table{border-collapse:collapse;border-spacing:0}
+*,::before,::after{box-sizing:border-box}
+html,body{font-size:100%}
+body{background:#fff;color:rgba(0,0,0,.8);padding:0;margin:0;font-family:"Noto Serif","DejaVu Serif",serif;line-height:1;position:relative;cursor:auto;-moz-tab-size:4;-o-tab-size:4;tab-size:4;word-wrap:anywhere;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased}
+a:hover{cursor:pointer}
+img,object,embed{max-width:100%;height:auto}
+object,embed{height:100%}
+img{-ms-interpolation-mode:bicubic}
+.left{float:left!important}
+.right{float:right!important}
+.text-left{text-align:left!important}
+.text-right{text-align:right!important}
+.text-center{text-align:center!important}
+.text-justify{text-align:justify!important}
+.hide{display:none}
+img,object,svg{display:inline-block;vertical-align:middle}
+textarea{height:auto;min-height:50px}
+select{width:100%}
+.subheader,.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{line-height:1.45;color:#7a2518;font-weight:400;margin-top:0;margin-bottom:.25em}
+div,dl,dt,dd,ul,ol,li,h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6,pre,form,p,blockquote,th,td{margin:0;padding:0}
+a{color:#2156a5;text-decoration:underline;line-height:inherit}
+a:hover,a:focus{color:#1d4b8f}
+a img{border:0}
+p{line-height:1.6;margin-bottom:1.25em;text-rendering:optimizeLegibility}
+p aside{font-size:.875em;line-height:1.35;font-style:italic}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{font-family:"Open Sans","DejaVu Sans",sans-serif;font-weight:300;font-style:normal;color:#ba3925;text-rendering:optimizeLegibility;margin-top:1em;margin-bottom:.5em;line-height:1.0125em}
+h1 small,h2 small,h3 small,#toctitle small,.sidebarblock>.content>.title small,h4 small,h5 small,h6 small{font-size:60%;color:#e99b8f;line-height:0}
+h1{font-size:2.125em}
+h2{font-size:1.6875em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.375em}
+h4,h5{font-size:1.125em}
+h6{font-size:1em}
+hr{border:solid #dddddf;border-width:1px 0 0;clear:both;margin:1.25em 0 1.1875em}
+em,i{font-style:italic;line-height:inherit}
+strong,b{font-weight:bold;line-height:inherit}
+small{font-size:60%;line-height:inherit}
+code{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;color:rgba(0,0,0,.9)}
+ul,ol,dl{line-height:1.6;margin-bottom:1.25em;list-style-position:outside;font-family:inherit}
+ul,ol{margin-left:1.5em}
+ul li ul,ul li ol{margin-left:1.25em;margin-bottom:0}
+ul.circle{list-style-type:circle}
+ul.disc{list-style-type:disc}
+ul.square{list-style-type:square}
+ul.circle ul:not([class]),ul.disc ul:not([class]),ul.square ul:not([class]){list-style:inherit}
+ol li ul,ol li ol{margin-left:1.25em;margin-bottom:0}
+dl dt{margin-bottom:.3125em;font-weight:bold}
+dl dd{margin-bottom:1.25em}
+blockquote{margin:0 0 1.25em;padding:.5625em 1.25em 0 1.1875em;border-left:1px solid #ddd}
+blockquote,blockquote p{line-height:1.6;color:rgba(0,0,0,.85)}
+@media screen and (min-width:768px){h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2}
+h1{font-size:2.75em}
+h2{font-size:2.3125em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.6875em}
+h4{font-size:1.4375em}}
+table{background:#fff;margin-bottom:1.25em;border:1px solid #dedede;word-wrap:normal}
+table thead,table tfoot{background:#f7f8f7}
+table thead tr th,table thead tr td,table tfoot tr th,table tfoot tr td{padding:.5em .625em .625em;font-size:inherit;color:rgba(0,0,0,.8);text-align:left}
+table tr th,table tr td{padding:.5625em .625em;font-size:inherit;color:rgba(0,0,0,.8)}
+table tr.even,table tr.alt{background:#f8f8f7}
+table thead tr th,table tfoot tr th,table tbody tr td,table tr td,table tfoot tr td{line-height:1.6}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2;word-spacing:-.05em}
+h1 strong,h2 strong,h3 strong,#toctitle strong,.sidebarblock>.content>.title strong,h4 strong,h5 strong,h6 strong{font-weight:400}
+.center{margin-left:auto;margin-right:auto}
+.stretch{width:100%}
+.clearfix::before,.clearfix::after,.float-group::before,.float-group::after{content:" ";display:table}
+.clearfix::after,.float-group::after{clear:both}
+:not(pre).nobreak{word-wrap:normal}
+:not(pre).nowrap{white-space:nowrap}
+:not(pre).pre-wrap{white-space:pre-wrap}
+:not(pre):not([class^=L])>code{font-size:.9375em;font-style:normal!important;letter-spacing:0;padding:.1em .5ex;word-spacing:-.15em;background:#f7f7f8;border-radius:4px;line-height:1.45;text-rendering:optimizeSpeed}
+pre{color:rgba(0,0,0,.9);font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;line-height:1.45;text-rendering:optimizeSpeed}
+pre code,pre pre{color:inherit;font-size:inherit;line-height:inherit}
+pre>code{display:block}
+pre.nowrap,pre.nowrap pre{white-space:pre;word-wrap:normal}
+em em{font-style:normal}
+strong strong{font-weight:400}
+.keyseq{color:rgba(51,51,51,.8)}
+kbd{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;display:inline-block;color:rgba(0,0,0,.8);font-size:.65em;line-height:1.45;background:#f7f7f7;border:1px solid #ccc;border-radius:3px;box-shadow:0 1px 0 rgba(0,0,0,.2),inset 0 0 0 .1em #fff;margin:0 .15em;padding:.2em .5em;vertical-align:middle;position:relative;top:-.1em;white-space:nowrap}
+.keyseq kbd:first-child{margin-left:0}
+.keyseq kbd:last-child{margin-right:0}
+.menuseq,.menuref{color:#000}
+.menuseq b:not(.caret),.menuref{font-weight:inherit}
+.menuseq{word-spacing:-.02em}
+.menuseq b.caret{font-size:1.25em;line-height:.8}
+.menuseq i.caret{font-weight:bold;text-align:center;width:.45em}
+b.button::before,b.button::after{position:relative;top:-1px;font-weight:400}
+b.button::before{content:"[";padding:0 3px 0 2px}
+b.button::after{content:"]";padding:0 2px 0 3px}
+p a>code:hover{color:rgba(0,0,0,.9)}
+#header,#content,#footnotes,#footer{width:100%;margin:0 auto;max-width:62.5em;*zoom:1;position:relative;padding-left:.9375em;padding-right:.9375em}
+#header::before,#header::after,#content::before,#content::after,#footnotes::before,#footnotes::after,#footer::before,#footer::after{content:" ";display:table}
+#header::after,#content::after,#footnotes::after,#footer::after{clear:both}
+#content{margin-top:1.25em}
+#content::before{content:none}
+#header>h1:first-child{color:rgba(0,0,0,.85);margin-top:2.25rem;margin-bottom:0}
+#header>h1:first-child+#toc{margin-top:8px;border-top:1px solid #dddddf}
+#header>h1:only-child,body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
+#header .details{border-bottom:1px solid #dddddf;line-height:1.45;padding-top:.25em;padding-bottom:.25em;padding-left:.25em;color:rgba(0,0,0,.6);display:flex;flex-flow:row wrap}
+#header .details span:first-child{margin-left:-.125em}
+#header .details span.email a{color:rgba(0,0,0,.85)}
+#header .details br{display:none}
+#header .details br+span::before{content:"\00a0\2013\00a0"}
+#header .details br+span.author::before{content:"\00a0\22c5\00a0";color:rgba(0,0,0,.85)}
+#header .details br+span#revremark::before{content:"\00a0|\00a0"}
+#header #revnumber{text-transform:capitalize}
+#header #revnumber::after{content:"\00a0"}
+#content>h1:first-child:not([class]){color:rgba(0,0,0,.85);border-bottom:1px solid #dddddf;padding-bottom:8px;margin-top:0;padding-top:1rem;margin-bottom:1.25rem}
+#toc{border-bottom:1px solid #e7e7e9;padding-bottom:.5em}
+#toc>ul{margin-left:.125em}
+#toc ul.sectlevel0>li>a{font-style:italic}
+#toc ul.sectlevel0 ul.sectlevel1{margin:.5em 0}
+#toc ul{font-family:"Open Sans","DejaVu Sans",sans-serif;list-style-type:none}
+#toc li{line-height:1.3334;margin-top:.3334em}
+#toc a{text-decoration:none}
+#toc a:active{text-decoration:underline}
+#toctitle{color:#7a2518;font-size:1.2em}
+@media screen and (min-width:768px){#toctitle{font-size:1.375em}
+body.toc2{padding-left:15em;padding-right:0}
+#toc.toc2{margin-top:0!important;background:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #e7e7e9;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
+#toc.toc2 #toctitle{margin-top:0;margin-bottom:.8rem;font-size:1.2em}
+#toc.toc2>ul{font-size:.9em;margin-bottom:0}
+#toc.toc2 ul ul{margin-left:0;padding-left:1em}
+#toc.toc2 ul.sectlevel0 ul.sectlevel1{padding-left:0;margin-top:.5em;margin-bottom:.5em}
+body.toc2.toc-right{padding-left:0;padding-right:15em}
+body.toc2.toc-right #toc.toc2{border-right-width:0;border-left:1px solid #e7e7e9;left:auto;right:0}}
+@media screen and (min-width:1280px){body.toc2{padding-left:20em;padding-right:0}
+#toc.toc2{width:20em}
+#toc.toc2 #toctitle{font-size:1.375em}
+#toc.toc2>ul{font-size:.95em}
+#toc.toc2 ul ul{padding-left:1.25em}
+body.toc2.toc-right{padding-left:0;padding-right:20em}}
+#content #toc{border:1px solid #e0e0dc;margin-bottom:1.25em;padding:1.25em;background:#f8f8f7;border-radius:4px}
+#content #toc>:first-child{margin-top:0}
+#content #toc>:last-child{margin-bottom:0}
+#footer{max-width:none;background:rgba(0,0,0,.8);padding:1.25em}
+#footer-text{color:hsla(0,0%,100%,.8);line-height:1.44}
+#content{margin-bottom:.625em}
+.sect1{padding-bottom:.625em}
+@media screen and (min-width:768px){#content{margin-bottom:1.25em}
+.sect1{padding-bottom:1.25em}}
+.sect1:last-child{padding-bottom:0}
+.sect1+.sect1{border-top:1px solid #e7e7e9}
+#content h1>a.anchor,h2>a.anchor,h3>a.anchor,#toctitle>a.anchor,.sidebarblock>.content>.title>a.anchor,h4>a.anchor,h5>a.anchor,h6>a.anchor{position:absolute;z-index:1001;width:1.5ex;margin-left:-1.5ex;display:block;text-decoration:none!important;visibility:hidden;text-align:center;font-weight:400}
+#content h1>a.anchor::before,h2>a.anchor::before,h3>a.anchor::before,#toctitle>a.anchor::before,.sidebarblock>.content>.title>a.anchor::before,h4>a.anchor::before,h5>a.anchor::before,h6>a.anchor::before{content:"\00A7";font-size:.85em;display:block;padding-top:.1em}
+#content h1:hover>a.anchor,#content h1>a.anchor:hover,h2:hover>a.anchor,h2>a.anchor:hover,h3:hover>a.anchor,#toctitle:hover>a.anchor,.sidebarblock>.content>.title:hover>a.anchor,h3>a.anchor:hover,#toctitle>a.anchor:hover,.sidebarblock>.content>.title>a.anchor:hover,h4:hover>a.anchor,h4>a.anchor:hover,h5:hover>a.anchor,h5>a.anchor:hover,h6:hover>a.anchor,h6>a.anchor:hover{visibility:visible}
+#content h1>a.link,h2>a.link,h3>a.link,#toctitle>a.link,.sidebarblock>.content>.title>a.link,h4>a.link,h5>a.link,h6>a.link{color:#ba3925;text-decoration:none}
+#content h1>a.link:hover,h2>a.link:hover,h3>a.link:hover,#toctitle>a.link:hover,.sidebarblock>.content>.title>a.link:hover,h4>a.link:hover,h5>a.link:hover,h6>a.link:hover{color:#a53221}
+details,.audioblock,.imageblock,.literalblock,.listingblock,.stemblock,.videoblock{margin-bottom:1.25em}
+details{margin-left:1.25rem}
+details>summary{cursor:pointer;display:block;position:relative;line-height:1.6;margin-bottom:.625rem;outline:none;-webkit-tap-highlight-color:transparent}
+details>summary::-webkit-details-marker{display:none}
+details>summary::before{content:"";border:solid transparent;border-left:solid;border-width:.3em 0 .3em .5em;position:absolute;top:.5em;left:-1.25rem;transform:translateX(15%)}
+details[open]>summary::before{border:solid transparent;border-top:solid;border-width:.5em .3em 0;transform:translateY(15%)}
+details>summary::after{content:"";width:1.25rem;height:1em;position:absolute;top:.3em;left:-1.25rem}
+.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{text-rendering:optimizeLegibility;text-align:left;font-family:"Noto Serif","DejaVu Serif",serif;font-size:1rem;font-style:italic}
+table.tableblock.fit-content>caption.title{white-space:nowrap;width:0}
+.paragraph.lead>p,#preamble>.sectionbody>[class=paragraph]:first-of-type p{font-size:1.21875em;line-height:1.6;color:rgba(0,0,0,.85)}
+.admonitionblock>table{border-collapse:separate;border:0;background:none;width:100%}
+.admonitionblock>table td.icon{text-align:center;width:80px}
+.admonitionblock>table td.icon img{max-width:none}
+.admonitionblock>table td.icon .title{font-weight:bold;font-family:"Open Sans","DejaVu Sans",sans-serif;text-transform:uppercase}
+.admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #dddddf;color:rgba(0,0,0,.6);word-wrap:anywhere}
+.admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
+.exampleblock>.content{border:1px solid #e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;border-radius:4px}
+.sidebarblock{border:1px solid #dbdbd6;margin-bottom:1.25em;padding:1.25em;background:#f3f3f2;border-radius:4px}
+.sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
+.exampleblock>.content>:first-child,.sidebarblock>.content>:first-child{margin-top:0}
+.exampleblock>.content>:last-child,.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
+.literalblock pre,.listingblock>.content>pre{border-radius:4px;overflow-x:auto;padding:1em;font-size:.8125em}
+@media screen and (min-width:768px){.literalblock pre,.listingblock>.content>pre{font-size:.90625em}}
+@media screen and (min-width:1280px){.literalblock pre,.listingblock>.content>pre{font-size:1em}}
+.literalblock pre,.listingblock>.content>pre:not(.highlight),.listingblock>.content>pre[class=highlight],.listingblock>.content>pre[class^="highlight "]{background:#f7f7f8}
+.literalblock.output pre{color:#f7f7f8;background:rgba(0,0,0,.9)}
+.listingblock>.content{position:relative}
+.listingblock code[data-lang]::before{display:none;content:attr(data-lang);position:absolute;font-size:.75em;top:.425rem;right:.5rem;line-height:1;text-transform:uppercase;color:inherit;opacity:.5}
+.listingblock:hover code[data-lang]::before{display:block}
+.listingblock.terminal pre .command::before{content:attr(data-prompt);padding-right:.5em;color:inherit;opacity:.5}
+.listingblock.terminal pre .command:not([data-prompt])::before{content:"$"}
+.listingblock pre.highlightjs{padding:0}
+.listingblock pre.highlightjs>code{padding:1em;border-radius:4px}
+.listingblock pre.prettyprint{border-width:0}
+.prettyprint{background:#f7f7f8}
+pre.prettyprint .linenums{line-height:1.45;margin-left:2em}
+pre.prettyprint li{background:none;list-style-type:inherit;padding-left:0}
+pre.prettyprint li code[data-lang]::before{opacity:1}
+pre.prettyprint li:not(:first-child) code[data-lang]::before{display:none}
+table.linenotable{border-collapse:separate;border:0;margin-bottom:0;background:none}
+table.linenotable td[class]{color:inherit;vertical-align:top;padding:0;line-height:inherit;white-space:normal}
+table.linenotable td.code{padding-left:.75em}
+table.linenotable td.linenos,pre.pygments .linenos{border-right:1px solid;opacity:.35;padding-right:.5em;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
+pre.pygments span.linenos{display:inline-block;margin-right:.75em}
+.quoteblock{margin:0 1em 1.25em 1.5em;display:table}
+.quoteblock:not(.excerpt)>.title{margin-left:-1.5em;margin-bottom:.75em}
+.quoteblock blockquote,.quoteblock p{color:rgba(0,0,0,.85);font-size:1.15rem;line-height:1.75;word-spacing:.1em;letter-spacing:0;font-style:italic;text-align:justify}
+.quoteblock blockquote{margin:0;padding:0;border:0}
+.quoteblock blockquote::before{content:"\201c";float:left;font-size:2.75em;font-weight:bold;line-height:.6em;margin-left:-.6em;color:#7a2518;text-shadow:0 1px 2px rgba(0,0,0,.1)}
+.quoteblock blockquote>.paragraph:last-child p{margin-bottom:0}
+.quoteblock .attribution{margin-top:.75em;margin-right:.5ex;text-align:right}
+.verseblock{margin:0 1em 1.25em}
+.verseblock pre{font-family:"Open Sans","DejaVu Sans",sans-serif;font-size:1.15rem;color:rgba(0,0,0,.85);font-weight:300;text-rendering:optimizeLegibility}
+.verseblock pre strong{font-weight:400}
+.verseblock .attribution{margin-top:1.25rem;margin-left:.5ex}
+.quoteblock .attribution,.verseblock .attribution{font-size:.9375em;line-height:1.45;font-style:italic}
+.quoteblock .attribution br,.verseblock .attribution br{display:none}
+.quoteblock .attribution cite,.verseblock .attribution cite{display:block;letter-spacing:-.025em;color:rgba(0,0,0,.6)}
+.quoteblock.abstract blockquote::before,.quoteblock.excerpt blockquote::before,.quoteblock .quoteblock blockquote::before{display:none}
+.quoteblock.abstract blockquote,.quoteblock.abstract p,.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{line-height:1.6;word-spacing:0}
+.quoteblock.abstract{margin:0 1em 1.25em;display:block}
+.quoteblock.abstract>.title{margin:0 0 .375em;font-size:1.15em;text-align:center}
+.quoteblock.excerpt>blockquote,.quoteblock .quoteblock{padding:0 0 .25em 1em;border-left:.25em solid #dddddf}
+.quoteblock.excerpt,.quoteblock .quoteblock{margin-left:0}
+.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{color:inherit;font-size:1.0625rem}
+.quoteblock.excerpt .attribution,.quoteblock .quoteblock .attribution{color:inherit;font-size:.85rem;text-align:left;margin-right:0}
+p.tableblock:last-child{margin-bottom:0}
+td.tableblock>.content{margin-bottom:1.25em;word-wrap:anywhere}
+td.tableblock>.content>:last-child{margin-bottom:-1.25em}
+table.tableblock,th.tableblock,td.tableblock{border:0 solid #dedede}
+table.grid-all>*>tr>*{border-width:1px}
+table.grid-cols>*>tr>*{border-width:0 1px}
+table.grid-rows>*>tr>*{border-width:1px 0}
+table.frame-all{border-width:1px}
+table.frame-ends{border-width:1px 0}
+table.frame-sides{border-width:0 1px}
+table.frame-none>colgroup+*>:first-child>*,table.frame-sides>colgroup+*>:first-child>*{border-top-width:0}
+table.frame-none>:last-child>:last-child>*,table.frame-sides>:last-child>:last-child>*{border-bottom-width:0}
+table.frame-none>*>tr>:first-child,table.frame-ends>*>tr>:first-child{border-left-width:0}
+table.frame-none>*>tr>:last-child,table.frame-ends>*>tr>:last-child{border-right-width:0}
+table.stripes-all>*>tr,table.stripes-odd>*>tr:nth-of-type(odd),table.stripes-even>*>tr:nth-of-type(even),table.stripes-hover>*>tr:hover{background:#f8f8f7}
+th.halign-left,td.halign-left{text-align:left}
+th.halign-right,td.halign-right{text-align:right}
+th.halign-center,td.halign-center{text-align:center}
+th.valign-top,td.valign-top{vertical-align:top}
+th.valign-bottom,td.valign-bottom{vertical-align:bottom}
+th.valign-middle,td.valign-middle{vertical-align:middle}
+table thead th,table tfoot th{font-weight:bold}
+tbody tr th{background:#f7f8f7}
+tbody tr th,tbody tr th p,tfoot tr th,tfoot tr th p{color:rgba(0,0,0,.8);font-weight:bold}
+p.tableblock>code:only-child{background:none;padding:0}
+p.tableblock{font-size:1em}
+ol{margin-left:1.75em}
+ul li ol{margin-left:1.5em}
+dl dd{margin-left:1.125em}
+dl dd:last-child,dl dd:last-child>:last-child{margin-bottom:0}
+li p,ul dd,ol dd,.olist .olist,.ulist .ulist,.ulist .olist,.olist .ulist{margin-bottom:.625em}
+ul.checklist,ul.none,ol.none,ul.no-bullet,ol.no-bullet,ol.unnumbered,ul.unstyled,ol.unstyled{list-style-type:none}
+ul.no-bullet,ol.no-bullet,ol.unnumbered{margin-left:.625em}
+ul.unstyled,ol.unstyled{margin-left:0}
+li>p:empty:only-child::before{content:"";display:inline-block}
+ul.checklist>li>p:first-child{margin-left:-1em}
+ul.checklist>li>p:first-child>.fa-square-o:first-child,ul.checklist>li>p:first-child>.fa-check-square-o:first-child{width:1.25em;font-size:.8em;position:relative;bottom:.125em}
+ul.checklist>li>p:first-child>input[type=checkbox]:first-child{margin-right:.25em}
+ul.inline{display:flex;flex-flow:row wrap;list-style:none;margin:0 0 .625em -1.25em}
+ul.inline>li{margin-left:1.25em}
+.unstyled dl dt{font-weight:400;font-style:normal}
+ol.arabic{list-style-type:decimal}
+ol.decimal{list-style-type:decimal-leading-zero}
+ol.loweralpha{list-style-type:lower-alpha}
+ol.upperalpha{list-style-type:upper-alpha}
+ol.lowerroman{list-style-type:lower-roman}
+ol.upperroman{list-style-type:upper-roman}
+ol.lowergreek{list-style-type:lower-greek}
+.hdlist>table,.colist>table{border:0;background:none}
+.hdlist>table>tbody>tr,.colist>table>tbody>tr{background:none}
+td.hdlist1,td.hdlist2{vertical-align:top;padding:0 .625em}
+td.hdlist1{font-weight:bold;padding-bottom:1.25em}
+td.hdlist2{word-wrap:anywhere}
+.literalblock+.colist,.listingblock+.colist{margin-top:-.5em}
+.colist td:not([class]):first-child{padding:.4em .75em 0;line-height:1;vertical-align:top}
+.colist td:not([class]):first-child img{max-width:none}
+.colist td:not([class]):last-child{padding:.25em 0}
+.thumb,.th{line-height:0;display:inline-block;border:4px solid #fff;box-shadow:0 0 0 1px #ddd}
+.imageblock.left{margin:.25em .625em 1.25em 0}
+.imageblock.right{margin:.25em 0 1.25em .625em}
+.imageblock>.title{margin-bottom:0}
+.imageblock.thumb,.imageblock.th{border-width:6px}
+.imageblock.thumb>.title,.imageblock.th>.title{padding:0 .125em}
+.image.left,.image.right{margin-top:.25em;margin-bottom:.25em;display:inline-block;line-height:0}
+.image.left{margin-right:.625em}
+.image.right{margin-left:.625em}
+a.image{text-decoration:none;display:inline-block}
+a.image object{pointer-events:none}
+sup.footnote,sup.footnoteref{font-size:.875em;position:static;vertical-align:super}
+sup.footnote a,sup.footnoteref a{text-decoration:none}
+sup.footnote a:active,sup.footnoteref a:active{text-decoration:underline}
+#footnotes{padding-top:.75em;padding-bottom:.75em;margin-bottom:.625em}
+#footnotes hr{width:20%;min-width:6.25em;margin:-.25em 0 .75em;border-width:1px 0 0}
+#footnotes .footnote{padding:0 .375em 0 .225em;line-height:1.3334;font-size:.875em;margin-left:1.2em;margin-bottom:.2em}
+#footnotes .footnote a:first-of-type{font-weight:bold;text-decoration:none;margin-left:-1.05em}
+#footnotes .footnote:last-of-type{margin-bottom:0}
+#content #footnotes{margin-top:-.625em;margin-bottom:0;padding:.75em 0}
+div.unbreakable{page-break-inside:avoid}
+.big{font-size:larger}
+.small{font-size:smaller}
+.underline{text-decoration:underline}
+.overline{text-decoration:overline}
+.line-through{text-decoration:line-through}
+.aqua{color:#00bfbf}
+.aqua-background{background:#00fafa}
+.black{color:#000}
+.black-background{background:#000}
+.blue{color:#0000bf}
+.blue-background{background:#0000fa}
+.fuchsia{color:#bf00bf}
+.fuchsia-background{background:#fa00fa}
+.gray{color:#606060}
+.gray-background{background:#7d7d7d}
+.green{color:#006000}
+.green-background{background:#007d00}
+.lime{color:#00bf00}
+.lime-background{background:#00fa00}
+.maroon{color:#600000}
+.maroon-background{background:#7d0000}
+.navy{color:#000060}
+.navy-background{background:#00007d}
+.olive{color:#606000}
+.olive-background{background:#7d7d00}
+.purple{color:#600060}
+.purple-background{background:#7d007d}
+.red{color:#bf0000}
+.red-background{background:#fa0000}
+.silver{color:#909090}
+.silver-background{background:#bcbcbc}
+.teal{color:#006060}
+.teal-background{background:#007d7d}
+.white{color:#bfbfbf}
+.white-background{background:#fafafa}
+.yellow{color:#bfbf00}
+.yellow-background{background:#fafa00}
+span.icon>.fa{cursor:default}
+a span.icon>.fa{cursor:inherit}
+.admonitionblock td.icon [class^="fa icon-"]{font-size:2.5em;text-shadow:1px 1px 2px rgba(0,0,0,.5);cursor:default}
+.admonitionblock td.icon .icon-note::before{content:"\f05a";color:#19407c}
+.admonitionblock td.icon .icon-tip::before{content:"\f0eb";text-shadow:1px 1px 2px rgba(155,155,0,.8);color:#111}
+.admonitionblock td.icon .icon-warning::before{content:"\f071";color:#bf6900}
+.admonitionblock td.icon .icon-caution::before{content:"\f06d";color:#bf3400}
+.admonitionblock td.icon .icon-important::before{content:"\f06a";color:#bf0000}
+.conum[data-value]{display:inline-block;color:#fff!important;background:rgba(0,0,0,.8);border-radius:50%;text-align:center;font-size:.75em;width:1.67em;height:1.67em;line-height:1.67em;font-family:"Open Sans","DejaVu Sans",sans-serif;font-style:normal;font-weight:bold}
+.conum[data-value] *{color:#fff!important}
+.conum[data-value]+b{display:none}
+.conum[data-value]::after{content:attr(data-value)}
+pre .conum[data-value]{position:relative;top:-.125em}
+b.conum *{color:inherit!important}
+.conum:not([data-value]):empty{display:none}
+dt,th.tableblock,td.content,div.footnote{text-rendering:optimizeLegibility}
+h1,h2,p,td.content,span.alt,summary{letter-spacing:-.01em}
+p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}
+p,blockquote,dt,td.content,td.hdlist1,span.alt,summary{font-size:1.0625rem}
+p{margin-bottom:1.25rem}
+.sidebarblock p,.sidebarblock dt,.sidebarblock td.content,p.tableblock{font-size:1em}
+.exampleblock>.content{background:#fffef7;border-color:#e0e0dc;box-shadow:0 1px 4px #e0e0dc}
+.print-only{display:none!important}
+@page{margin:1.25cm .75cm}
+@media print{*{box-shadow:none!important;text-shadow:none!important}
+html{font-size:80%}
+a{color:inherit!important;text-decoration:underline!important}
+a.bare,a[href^="#"],a[href^="mailto:"]{text-decoration:none!important}
+a[href^="http:"]:not(.bare)::after,a[href^="https:"]:not(.bare)::after{content:"(" attr(href) ")";display:inline-block;font-size:.875em;padding-left:.25em}
+abbr[title]{border-bottom:1px dotted}
+abbr[title]::after{content:" (" attr(title) ")"}
+pre,blockquote,tr,img,object,svg{page-break-inside:avoid}
+thead{display:table-header-group}
+svg{max-width:100%}
+p,blockquote,dt,td.content{font-size:1em;orphans:3;widows:3}
+h2,h3,#toctitle,.sidebarblock>.content>.title{page-break-after:avoid}
+#header,#content,#footnotes,#footer{max-width:none}
+#toc,.sidebarblock,.exampleblock>.content{background:none!important}
+#toc{border-bottom:1px solid #dddddf!important;padding-bottom:0!important}
+body.book #header{text-align:center}
+body.book #header>h1:first-child{border:0!important;margin:2.5em 0 1em}
+body.book #header .details{border:0!important;display:block;padding:0!important}
+body.book #header .details span:first-child{margin-left:0!important}
+body.book #header .details br{display:block}
+body.book #header .details br+span::before{content:none!important}
+body.book #toc{border:0!important;text-align:left!important;padding:0!important;margin:0!important}
+body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-break-before:always}
+.listingblock code[data-lang]::before{display:block}
+#footer{padding:0 .9375em}
+.hide-on-print{display:none!important}
+.print-only{display:block!important}
+.hide-for-print{display:none!important}
+.show-for-print{display:inherit!important}}
+@media amzn-kf8,print{#header>h1:first-child{margin-top:1.25rem}
+.sect1{padding:0!important}
+.sect1+.sect1{border:0}
+#footer{background:none}
+#footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
+@media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/styles/github.min.css">
+</head>
+<body class="article">
+<div id="header">
+</div>
+<div id="content">
+<div class="paragraph">
+<p>25 phương pháp tự học</p>
+</div>
+<h1 id="chương-1-kiểm-soát-khát-vọng" class="sect0"><a class="anchor" href="#chương-1-kiểm-soát-khát-vọng"></a><strong>Chương 1: Kiểm soát khát vọng</strong></h1>
+<div class="paragraph">
+<p><strong>Kỹ thuật 1: Bản đồ cảm hứng</strong></p>
+</div>
+<div class="paragraph">
+<p>Một cách để lập kế hoạch cho hành trình của bạn trước khi bắt đầu là suy nghĩ về một sự kiện đã có ảnh hưởng đến bạn. Lấy ví dụ, một đứa trẻ gặp một nhà sinh vật học trong một buổi nói chuyện ở trường tiểu học. Nhà sinh vật học kể về cách ông vào nghề của mình. Ông bắt đầu bằng việc quan tâm đến côn trùng và sau đó, sau khi sử dụng những con côn trùng đó để câu cá, ông cũng trở nên quan tâm đến câu cá. Ông đã trở nên thích thú với tất cả các loại động vật, và đó là lý do ông bắt đầu theo đuổi ngành sinh học.</p>
+</div>
+<div class="paragraph">
+<p>Có một quy trình nhiều bước mà tác giả khuyến nghị. Quy trình này giúp bạn tận dụng tối đa sự tương tác này.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Viết ra sự kiện đã có ảnh hưởng đến bạn. Trong trường hợp này, có thể là cuộc gặp gỡ với nhà sinh vật học.</p>
+</li>
+<li>
+<p>Viết ra tất cả những ảnh hưởng mà cuộc gặp gỡ hoặc sự kiện này đã có đến bạn. Bạn nên làm điều này một lần. Hãy ghi lại càng nhiều càng tốt trong một sơ đồ bản đồ (như hình dưới đây).</p>
+</li>
+<li>
+<p>Bạn nên suy nghĩ về cách mà hành động, thói quen và cách suy nghĩ của bạn đã thay đổi từ cuộc gặp gỡ này.</p>
+</li>
+<li>
+<p>Những điều gì đã để lại ấn tượng mạnh mẽ cho bạn?</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Sau khi viết ra nhiều ảnh hưởng, bạn cần đánh giá những ảnh hưởng này xem chúng có tác động tích cực hay tiêu cực đến bạn. Ví dụ, nhà sinh vật học này lang thang khắp các lĩnh vực trong ngành sinh học, nhưng cuối cùng tất cả chúng hòa quyện vào nhau và giúp ông thực hiện công việc của mình một cách hiệu quả. Điều này có thể khiến bạn nghĩ rằng vị trí hiện tại của bạn với tư cách là một người tổng quát là một điều tốt.</p>
+</div>
+<div class="paragraph">
+<p>Hãy hỏi bản thân tại sao bạn đánh giá một điều gì đó theo cách nhất định. Ví dụ, bạn có thể bị thu hút bởi ý tưởng rằng theo đuổi sở thích của một người cuối cùng sẽ kết nối những gì họ có thể làm trong công việc chuyên nghiệp. Bạn bị thu hút bởi ý tưởng này vì nó biện minh cho niềm tin của bạn rằng một người có thể theo đuổi sở thích của mình ngay cả khi người khác thấy nó tầm thường trong hiện tại.</p>
+</div>
+<div class="paragraph">
+<p>Quay trở lại với những điểm nổi bật mà bạn đã nêu ra trong các bước 1 đến 4 và cố gắng kết nối chúng với các sự kiện khác. Bạn cũng có thể bình luận về lý do tại sao điểm đó lại nổi bật đối với bạn.</p>
+</div>
+<hr>
+<h1 id="chương-2-rút-ra-mục-tiêu" class="sect0"><a class="anchor" href="#chương-2-rút-ra-mục-tiêu"></a><strong>Chương 2: Rút ra mục tiêu</strong></h1>
+<div class="paragraph">
+<p><strong>Kỹ thuật 2: Phương pháp cầu thang</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Liệt kê mọi thứ bạn có thể làm hoặc biết đến hiện tại. Ví dụ: bạn đang cố gắng học toán.</p>
+</li>
+<li>
+<p>Sắp xếp chúng như một cái cầu thang từ dễ đến khó.</p>
+</li>
+<li>
+<p>Xác định điểm bắt đầu. Đây là nơi bạn cảm thấy mình có thể làm được, nhưng đã quên một chút về nó. Nó có thể là điều gì đó mà bạn đã học một cách mơ hồ nhưng vẫn cảm thấy không thoải mái với tài liệu đó.</p>
+</li>
+<li>
+<p>Hạ mình xuống hai bước từ điểm bạn xác định là điểm bắt đầu. Bằng cách này, bạn sẽ đảm bảo rằng bạn cảm thấy thoải mái với các yêu cầu cần thiết trước tiên.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Giới hạn:</strong></p>
+</div>
+<div class="paragraph">
+<p>Bạn có thể nhanh chóng mất động lực khi phải học những điều xa rời mục tiêu cuối cùng của mình.</p>
+</div>
+<div class="paragraph">
+<p><strong>Kỹ thuật 3: Phương pháp tạo lộ trình</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Viết ra những mục tiêu mà bạn muốn đạt được trên một tờ giấy.</p>
+</li>
+<li>
+<p>Ghi lại những gì bạn đã biết.</p>
+</li>
+<li>
+<p>Ghi ra những gì bạn không thể làm.</p>
+</li>
+<li>
+<p>Viết ra một cách mơ hồ những gì bạn muốn.</p>
+</li>
+<li>
+<p>Làm lại mục tiêu mơ hồ mà bạn đã có ở Bước 1.</p>
+</li>
+<li>
+<p>Thêm nhiều bước trung gian hơn.</p>
+</li>
+<li>
+<p>Đảm bảo rằng các bước đó có thể thực hiện được.</p>
+</li>
+<li>
+<p>Thông thường, bạn muốn vạch ra những bước lớn trước khi thêm vào các bước nhỏ hơn.</p>
+</li>
+<li>
+<p>Khám phá tất cả các lộ trình có thể. Tạo ra các lựa chọn thay thế và suy nghĩ về lợi ích và nhược điểm của chúng.</p>
+</li>
+<li>
+<p>Chọn một lộ trình từ các tùy chọn mà bạn đã tạo ra cho chính mình.</p>
+</li>
+<li>
+<p>Liên tục điều chỉnh.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>kỹ thuật  4:  dù</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>Xác định mục tiêu cuối cùng của bạn khi học một điều gì đó</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Nhảy vào các lĩnh vực/vấn đề gần gũi với mục tiêu cuối cùng đó.</p>
+</li>
+<li>
+<p>Xem bạn có thể làm gì và từ từ lùi lại khi bạn không thể làm được. Cuối cùng, bạn sẽ kết thúc ở một nơi mà bạn cảm thấy thoải mái để làm việc hướng tới mục tiêu cuối cùng của mình.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Ưu điểm của phương pháp dù</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Dễ duy trì động lực khi điều đó gần với mục tiêu cuối cùng của bạn.</p>
+</li>
+<li>
+<p>Có thể dễ dàng phát hiện ra những gì bạn biết và những gì bạn không biết.</p>
+</li>
+<li>
+<p>Vì bạn chỉ tập trung vào những gì cần giải quyết để đạt được mục tiêu cuối cùng, bạn sẽ giảm thiểu thời gian lãng phí.</p>
+</li>
+</ul>
+</div>
+<hr>
+<h1 id="chương-3-tăng-cường-động-lực" class="sect0"><a class="anchor" href="#chương-3-tăng-cường-động-lực"></a><strong>Chương 3: Tăng cường động lực</strong></h1>
+<div class="paragraph">
+<p><strong>Kỹ thuật 5: Phương pháp chia 1/100</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Đếm số lượng công việc hoặc vấn đề bạn cần giải quyết. Điều này có thể là số lượng bài toán trong một bộ bài tập hoặc số trang trong một cuốn sách (ví dụ: 1000 bài toán hoặc 1000 trang).</p>
+</li>
+<li>
+<p>Chia số lượng này cho 100. Điều này sẽ giúp bạn có được khoảng 10 bài toán hoặc trang mỗi ngày. Nó cũng cho bạn biết khoảng thời gian bạn cần để hoàn thành: 5 tháng.</p>
+</li>
+<li>
+<p>Nếu vẫn cảm thấy đó là một vấn đề lớn và bạn thấy thiếu động lực để làm điều đó, hãy thử chia nó thành các phần nhỏ hơn. Chia nó cho 10 lần nữa (vì vậy đây là 1/1000 của toàn bộ). Trong ví dụ trên, giờ đây bạn sẽ giải quyết một trang mỗi ngày.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Lý do chúng ta thất bại trong việc lập kế hoạch 1/100 này là vì chúng ta nghĩ rằng nó sẽ mất rất nhiều thời gian. Không làm gì còn tồi tệ hơn là làm một lượng công việc tối thiểu. Tốt hơn hết là suy nghĩ "Dù sao đi nữa, hãy bắt đầu làm điều gì đó hôm nay."</p>
+</div>
+<div class="paragraph">
+<p><strong>Kỹ thuật 6: Giới hạn thời gian hai phút</strong></p>
+</div>
+<div class="paragraph">
+<p>Khi công việc có vẻ nặng nề hoặc bạn có ít động lực để thực hiện nó:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Đặt hẹn giờ trong hai phút.</p>
+</li>
+<li>
+<p>Bắt đầu hẹn giờ và bắt đầu làm việc.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Tiếp tục làm việc? Nếu bạn làm, bạn sẽ tiếp tục mà không có giới hạn thời gian.</p>
+</li>
+<li>
+<p>Làm công việc khác?</p>
+</li>
+<li>
+<p>Nghỉ ngơi?</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Lý thuyết cơ bản đứng sau phương pháp này được gọi là Hiệu ứng Ovsiankina.</strong> Lý thuyết này cho rằng mọi người có xu hướng tiếp tục những hành động bị gián đoạn khi chúng chưa được hoàn thành. Trong đầu chúng ta, những công việc chưa hoàn thành sẽ cứ đeo bám như một mảnh vụn. Sớm hay muộn, điều này trở thành một nhu cầu gần như phải hoàn thành nó. Việc không hoàn thành nó gây căng thẳng cho năng lượng tinh thần của chúng ta. Vì vậy, theo một cách nào đó, bạn đang buộc bản thân phải làm điều gì đó mà bạn có ít động lực để thực hiện ngay từ đầu, bởi vì giờ đây nó tạo ra một áp lực lên nguồn cung năng lượng tinh thần của bạn.</p>
+</div>
+<div class="paragraph">
+<p>Vì vậy, tất cả những gì bạn cần làm là bắt đầu. Nhưng đây thường là bước khó nhất.</p>
+</div>
+<hr>
+<h1 id="chương-4-bảo-tồn-thời-gian" class="sect0"><a class="anchor" href="#chương-4-bảo-tồn-thời-gian"></a>chương 4: Bảo tồn thời gian</h1>
+<div class="paragraph">
+<p><strong>Kỹ thuật 7: Theo dõi thời</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Viết ra kế hoạch cho ngày hôm đó.</p>
+</li>
+<li>
+<p>Thực sự ghi lại những gì bạn đã làm.</p>
+</li>
+<li>
+<p>So sánh ngày hôm đó với kế hoạch của bạn.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Vấn đề là nhiều người thích lập kế hoạch, nhưng không nhiều người thực sự ghi lại những gì họ làm. Vì lý do này, họ không biết liệu họ có đang tuân theo kế hoạch của mình hay không.</p>
+</div>
+<div class="paragraph">
+<p><strong>Kỹ thuật 8: Tối đa hóa các khoảng thời gian xám</strong></p>
+</div>
+<div class="paragraph">
+<p>Mục đích của kỹ thuật này là tăng cường hiệu quả của lịch trình hàng ngày của bạn. Nói cách khác, nó sẽ cố gắng tận dụng nhiều thời gian học tập hơn vào những gì bạn đã có hoặc bị hạn chế.</p>
+</div>
+<div class="paragraph">
+<p>Hãy nghĩ về nó như là lái xe phục hồi (như đã đề cập trong mục trước). Có những cách mà bạn có thể tạo ra thời gian từ những khoảng trống.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Sử dụng bản ghi thời gian mà bạn đã có.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Trắng</strong> : hoàn toàn tự do</p>
+</li>
+<li>
+<p><strong>Xám</strong> : bị hạn chế, nhưng vẫn có một chút tự do</p>
+</li>
+<li>
+<p><strong>Đen</strong> : không có tự do</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Ngay cả trong thời gian đen, vẫn có những điều bạn có thể làm để hỗ trợ mục tiêu học tập của mình.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Suy nghĩ về những loại hoạt động nào bạn có thể thực hiện trước để chuẩn bị cho các hoạt động bổ sung mà bạn sẽ thêm vào lịch trình của mình. Trong bảng dưới đây, bạn sẽ thấy mức độ tự do tương ứng với các loại hoạt động mà bạn có thể thực hiện.</p>
+</li>
+<li>
+<p>Chèn các hoạt động chuẩn bị và tự học (ví dụ: ôn tập thẻ ghi nhớ, nghe audio ngoại ngữ) vào lịch trình hiện tại của bạn. Hãy tưởng tượng bảng dưới đây là ngày đã được ghi lại của bạn. Bạn</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Về "Thời gian Ủ ấp"</strong></p>
+</div>
+<div class="paragraph">
+<p>Ý tưởng này được nghĩ ra bởi Jules-Henri Poincaré, một nhà toán học người Pháp. Ông nói rằng khi chúng ta rời xa nhiệm vụ của mình, chúng ta vẫn đang suy nghĩ về nhiệm vụ đó (thường là chưa hoàn thành) trong tâm trí. Khi chúng ta không thể giải quyết một vấn đề nào đó, tiềm thức của chúng ta làm việc chăm chỉ để cố gắng tìm ra câu trả lời. Sau đó, đột nhiên từ đâu đó, chúng ta có thể giải quyết được nó. Một ví dụ cực đoan có thể là khi bạn hoàn thành một bài kiểm tra, không thể làm được một câu hỏi, nhưng lại tìm ra câu trả lời ngay sau khi bạn kết thúc.</p>
+</div>
+<div class="paragraph">
+<p>Ý nghĩa ở đây là chúng ta có thể làm việc trên một số vấn đề trước đó và để cho thời gian ủ ấp diễn ra trong những giờ "đen" của mình.</p>
+</div>
+<hr>
+<h1 id="chương-5-cách-tiếp-tục" class="sect0"><a class="anchor" href="#chương-5-cách-tiếp-tục"></a><strong>Chương 5: Cách Tiếp Tục</strong></h1>
+<div class="paragraph">
+<p><strong>Kỹ thuật 9: Tận dụng Thói Quen Cũ</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Chọn một thói quen hiện tại (ví dụ: kiểm tra Twitter).</p>
+</li>
+<li>
+<p>Đặt một thói quen mới ngay trước hoặc sau thói quen đó. Hãy làm cho thói quen mới này nhỏ nhất có thể.</p>
+</li>
+<li>
+<p>Bạn có thể dần dần tăng khối lượng hoặc thời gian của thói quen mới sau khi duy trì nó (bằng cách gắn liền với những thói quen hiện có) trong một tuần. Ví dụ, bạn có thể tăng thời gian thêm 5 hoặc 10 phút nếu đó là một thói quen liên quan đến thời gian.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Kỹ thuật này được hỗ trợ bởi "Lý thuyết Tương đối về Sự Tăng cường" hay Nguyên tắc Premack. Lý thuyết này cho rằng hành vi có khả năng xảy ra cao hơn (thói quen hiện tại của chúng ta) sẽ củng cố hành vi có khả năng xảy ra thấp hơn (các thói quen mới của chúng ta). Nếu các hoạt động thưởng được điều kiện hóa dựa trên các hoạt động ít thưởng hơn, người ta có xu hướng thực hiện hoạt động ít thưởng đó trước.</p>
+</div>
+<div class="paragraph">
+<p>Ví dụ trong trường hợp của tôi, tôi chỉ cho phép bản thân xem <strong>The Crown</strong> sau khi thực hành piano trong 15 phút.</p>
+</div>
+<div class="paragraph">
+<p>Trong trường hợp của một đứa trẻ, có thể hứa hẹn rằng nó sẽ được ăn kem chỉ sau khi ăn rau.</p>
+</div>
+<div class="paragraph">
+<p>Đoạn văn này được hỗ trợ bởi "Lý thuyết Tương đối về Sự Tăng cường" hay Nguyên tắc Premack. Lý thuyết này cho rằng hành vi có khả năng xảy ra cao hơn (thói quen hiện tại của chúng ta) sẽ củng cố hành vi có khả năng xảy ra thấp hơn (các thói quen mới của chúng ta). Nếu các hoạt động thưởng được điều kiện hóa dựa trên các hoạt động ít thưởng hơn, người ta có xu hướng thực hiện hoạt động ít thưởng đó trước.</p>
+</div>
+<div class="paragraph">
+<p>Trong trường hợp của tôi, tôi chỉ cho phép bản thân xem <strong>The Crown</strong> sau khi thực hành piano trong 15 phút.</p>
+</div>
+<div class="paragraph">
+<p>Trong trường hợp của một đứa trẻ, nó có thể được hứa hẹn ăn kem chỉ sau khi ăn rau.</p>
+</div>
+<div class="paragraph">
+<p><strong>Kỹ thuật 10: Bảng Thiết Kế Hành Động</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Xác định một hành động mà bạn muốn thêm vào hoặc giảm bớt. Tìm một đối thủ: một hành động ngăn cản bạn thực hiện hành động mục tiêu của mình.</p>
+</li>
+<li>
+<p>Tạo bảng dưới đây:</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>| Hoạt động thiếu hụt có xu hướng&#8230;&#8203;                            | Hoạt động quá mức có xu hướng&#8230;&#8203; |
+| --------------------------------------------------------------------- | ---------------------------------------- |
+| Không có hoặc ít kích thích/catalyst                            | Có kích thích cao                     |
+| Có rào cản cao                                                     | Có rào cản thấp                      |
+| Thua đối thủ                                                       | Thắng đối thủ                        |
+| Có kết quả trì hoãn (không thể thấy lợi ích ngay lập tức) | Có kết quả ngay lập tức             |
+| Không có phần thưởng tức thì                                   | Có phần thưởng ngay lập tức        |</p>
+</div>
+<div class="paragraph">
+<p><strong>3.Bạn cần vay mượn các thuộc tính của đối thủ để cải thiện hành động mục tiêu của mình.</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>Kỹ thuật 11: Nhật Ký Hoạt Động</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Mở một tệp văn bản hoặc bắt đầu một trang mới trong sổ tay của bạn.</p>
+</li>
+<li>
+<p>Viết ra những mục tiêu bạn muốn đạt được.</p>
+</li>
+<li>
+<p>Quyết định phương pháp ghi chép. Điều này có thể là viết tắt của tiêu đề sách hoặc số trang.</p>
+</li>
+<li>
+<p>Khi bạn bắt đầu đọc hoặc thực hiện nhiệm vụ, hãy ghi lại ngay lập tức.</p>
+</li>
+<li>
+<p>Thường xuyên trở lại đọc các ghi chép trước đó.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Về cơ bản, đây giống như một công cụ theo dõi thói quen.</p>
+</div>
+<div class="paragraph">
+<p>Cái bẫy trung gian là giai đoạn mà chúng ta cảm thấy mình đã đạt đến một mức độ ổn định. Khi mới bắt đầu, chúng ta có thể tiếp thu kiến thức rất nhanh vì thực tế là chúng ta đang bắt đầu từ con số 0. Thật dễ dàng để nhận thấy sự thay đổi từ 0 đến 1. Nhưng sau một thời gian, khi chúng ta đạt đến trình độ trung gian, tốc độ học hỏi của chúng ta chậm lại và khối lượng công việc mà chúng ta bỏ ra mang lại hiệu quả giảm dần. Mặc dù vậy, chúng ta vẫn tin rằng tiến trình học tập của mình là tuyến tính - có nghĩa là chúng ta nên nhận được sự gia tăng đồng đều trong khả năng của mình cho mỗi giờ học. Sự chênh lệch giữa kỳ vọng của bạn và thực tế dẫn đến sự thất vọng, điều này có thể khiến bạn bỏ cuộc hoàn toàn.</p>
+</div>
+<div class="paragraph">
+<p><strong>Kỹ thuật 12: Người Giữ Cửa</strong></p>
+</div>
+<div class="paragraph">
+<p>Phương pháp này buộc bạn phải cam kết với một người khác bằng cách soạn thảo một hợp đồng. Bạn cần cung cấp cho những người mà bạn phải chịu trách nhiệm một danh sách các mục tiêu mà bạn muốn đạt được trong một tuần.</p>
+</div>
+<div class="paragraph">
+<p><strong>Kỹ thuật 13: Sơ Đồ Tư Duy</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Ghi lại mọi thứ bạn biết về chủ đề:</strong> Bắt đầu bằng cách viết ra tất cả những kiến thức mà bạn đã có liên quan đến chủ đề này.</p>
+</li>
+<li>
+<p><strong>Nhấn mạnh những điều bạn đã biết:</strong> Kẻ một ô xung quanh những thông tin mà bạn đã chắc chắn biết.</p>
+</li>
+<li>
+<p><strong>Đánh dấu những điều bạn không chắc chắn nhưng quan trọng:</strong> Kẻ một ô khác xung quanh những thông tin mà bạn nghĩ là quan trọng nhưng chưa rõ ràng. Tìm kiếm để làm rõ chúng.</p>
+</li>
+<li>
+<p><strong>Tạo sơ đồ tư duy:</strong> Dựa trên cách bạn nghĩ về sự liên quan giữa các thông tin, hãy vẽ một sơ đồ tư duy.</p>
+</li>
+<li>
+<p><strong>Khoanh tròn những điều bạn muốn tìm hiểu thêm:</strong> Từ sơ đồ, hãy khoanh tròn những thông tin mà bạn muốn khám phá sâu hơn.</p>
+</li>
+<li>
+<p><strong>Chọn chủ đề nghiên cứu:</strong> Từ những vòng tròn đã khoanh, chọn ra những điều mà bạn muốn tìm hiểu NHẤT. Đây sẽ là chủ đề nghiên cứu của bạn.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Kỹ thuật 14: Lamy’s Topos</strong></p>
+</div>
+<div class="paragraph">
+<p>Kỹ thuật này sử dụng biểu đồ để giúp bạn trả lời và làm rõ các khái niệm mà bạn đang học. Nó được phát triển bởi Bernard Lamy, một nhà toán học người Pháp.</p>
+</div>
+<div class="sect2">
+<h3 id="cách-sử-dụng-lamys-topos"><a class="anchor" href="#cách-sử-dụng-lamys-topos"></a>Cách sử dụng Lamy’s Topos:</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Chọn khái niệm:</strong> Bắt đầu bằng cách xác định một khái niệm cụ thể mà bạn muốn tìm hiểu.</p>
+</li>
+<li>
+<p><strong>Tạo biểu đồ:</strong> Vẽ một biểu đồ với các nhánh khác nhau thể hiện các khía cạnh khác nhau của khái niệm đó.</p>
+</li>
+<li>
+<p><strong>Phân chia thông tin:</strong> Mỗi nhánh có thể bao gồm các thành phần như định nghĩa, ví dụ, ứng dụng và các mối liên hệ với các khái niệm khác.</p>
+</li>
+<li>
+<p><strong>Phân tích:</strong> Sử dụng biểu đồ này để phân tích các mối liên hệ và hiểu sâu hơn về khái niệm bạn đang nghiên cứu.</p>
+</li>
+<li>
+<p><strong>Cập nhật thường xuyên:</strong> Khi bạn có thêm kiến thức mới, hãy cập nhật biểu đồ để nó luôn phản ánh thông tin chính xác và toàn diện nhất về khái niệm đó.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Lamy’s Topos giúp bạn hình dung và tổ chức thông tin một cách trực quan, từ đó cải thiện khả năng hiểu và ghi nhớ các khái niệm phức tạp.</p>
+</div>
+<hr>
+</div>
+<h1 id="chương-6-tìm-kiếm-tài-liệu" class="sect0"><a class="anchor" href="#chương-6-tìm-kiếm-tài-liệu"></a><strong>Chương 6: Tìm kiếm Tài liệu</strong></h1>
+<div class="paragraph">
+<p><strong>Kỹ thuật 15: Nhật ký Nghiên cứu</strong></p>
+</div>
+<div class="paragraph">
+<p>Nhật ký nghiên cứu được chia thành hai phần. Phần đầu là những câu hỏi bạn cần trả lời trước khi bắt đầu nghiên cứu. Phần thứ hai là những câu hỏi bạn trả lời sau khi hoàn thành nghiên cứu.</p>
+</div>
+<div class="sect2">
+<h3 id="trước-khi-nghiên-cứu"><a class="anchor" href="#trước-khi-nghiên-cứu"></a>Trước khi nghiên cứu:</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Những gì bạn đã biết?</strong>
+Ghi lại những kiến thức nền tảng mà bạn đã có về chủ đề nghiên cứu.</p>
+</li>
+<li>
+<p><strong>Bạn muốn biết điều gì từ nghiên cứu?</strong>
+Xác định các câu hỏi hoặc vấn đề cụ thể mà bạn muốn giải quyết thông qua nghiên cứu.</p>
+</li>
+<li>
+<p><strong>Bạn nên nghiên cứu như thế nào?</strong>
+Lập kế hoạch cho cách thức và phương pháp bạn sẽ sử dụng để tiến hành nghiên cứu, như tìm kiếm tài liệu, phỏng vấn, hay khảo sát.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="sau-khi-nghiên-cứu"><a class="anchor" href="#sau-khi-nghiên-cứu"></a>Sau khi nghiên cứu:</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Bạn đã học được gì?</strong>
+Tóm tắt những phát hiện và thông tin mới mà bạn đã thu thập được từ nghiên cứu.</p>
+</li>
+<li>
+<p><strong>Bạn vẫn không hiểu điều gì?</strong>
+Nhận diện các khía cạnh hoặc câu hỏi mà bạn vẫn chưa tìm ra câu trả lời.</p>
+</li>
+<li>
+<p><strong>Suy ngẫm về phương pháp nghiên cứu của bạn</strong>
+Đánh giá cách thức bạn đã tiến hành nghiên cứu và xem xét hiệu quả của nó.</p>
+</li>
+<li>
+<p><strong>Điều gì có vẻ hữu ích?</strong>
+Ghi lại những tài nguyên, thông tin hoặc phương pháp nào đã giúp ích cho bạn trong quá trình nghiên cứu.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="lợi-ích-của-kỹ-thuật-nhật-ký-nghiên-cứu"><a class="anchor" href="#lợi-ích-của-kỹ-thuật-nhật-ký-nghiên-cứu"></a>Lợi ích của Kỹ thuật Nhật ký Nghiên cứu:</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Giúp tổ chức thông tin và phản ánh quá trình học tập.</p>
+</li>
+<li>
+<p>Xác định rõ ràng các điểm mạnh và yếu trong phương pháp nghiên cứu.</p>
+</li>
+<li>
+<p>Tạo cơ hội để học hỏi và cải thiện kỹ năng nghiên cứu trong tương lai.</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+<h1 id="chương-7-tổ-chức-tài-liệu-đã-thu-thập" class="sect0"><a class="anchor" href="#chương-7-tổ-chức-tài-liệu-đã-thu-thập"></a><strong>Chương 7: Tổ chức Tài liệu Đã Thu Thập</strong></h1>
+<div class="paragraph">
+<p><strong>Kỹ thuật 16: Ma trận Mục Lục</strong></p>
+</div>
+<div class="sect2">
+<h3 id="hướng-dẫn-thực-hiện-ma-trận-mục-lục"><a class="anchor" href="#hướng-dẫn-thực-hiện-ma-trận-mục-lục"></a>Hướng dẫn thực hiện Ma trận Mục Lục:</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Ghi chú các điểm nổi bật</strong> :
+Trong mỗi chương của tài liệu hoặc cuốn sách bạn đang nghiên cứu, hãy ghi lại các điểm nổi bật, ý tưởng chính, hoặc khái niệm quan trọng mà bạn nhận thấy.</p>
+</li>
+<li>
+<p><strong>Xây dựng Ma trận</strong> :
+Tạo một bảng hoặc ma trận, trong đó các hàng có thể đại diện cho các chương và các cột đại diện cho các điểm nổi bật hoặc khái niệm liên quan.| Chương   | Điểm nổi bật 1 | Điểm nổi bật 2 | Điểm nổi bật 3 |
+| ---------- | ------------------ | ------------------ | ------------------ |
+| Chương 1 | Ý tưởng A       | Ý tưởng B       | Ý tưởng C       |
+| Chương 2 | Ý tưởng D       | Ý tưởng E       | Ý tưởng F       |
+| Chương 3 | Ý tưởng G       | Ý tưởng H       | Ý tưởng I       |</p>
+</li>
+<li>
+<p><strong>Kết nối các ý tưởng</strong> :
+Sử dụng ma trận để xác định mối quan hệ giữa các điểm nổi bật và các chương khác nhau. Bạn có thể vẽ các mũi tên hoặc sử dụng các màu sắc khác nhau để thể hiện sự kết nối giữa các ý tưởng liên quan.</p>
+</li>
+<li>
+<p><strong>Phân tích và tổng hợp</strong> :
+Sau khi hoàn thành ma trận, phân tích các kết nối và xem xét cách các ý tưởng tương tác với nhau. Điều này giúp bạn có cái nhìn tổng quát hơn về chủ đề nghiên cứu và làm nổi bật các khía cạnh bạn có thể muốn khám phá sâu hơn.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="lợi-ích-của-kỹ-thuật-ma-trận-mục-lục"><a class="anchor" href="#lợi-ích-của-kỹ-thuật-ma-trận-mục-lục"></a>Lợi ích của Kỹ thuật Ma trận Mục Lục:</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Tổ chức thông tin</strong> : Giúp bạn hệ thống hóa và tổ chức các tài liệu đã thu thập.</p>
+</li>
+<li>
+<p><strong>Nhận diện mối quan hệ</strong> : Tạo điều kiện để nhận ra các mối liên hệ giữa các ý tưởng khác nhau.</p>
+</li>
+<li>
+<p><strong>Hỗ trợ trong việc viết báo cáo</strong> : Cung cấp một cơ sở dữ liệu có cấu trúc để bạn dễ dàng tham khảo khi viết báo cáo hoặc bài luận.</p>
+</li>
+<li>
+<p><strong>Tăng cường trí nhớ</strong> : Giúp củng cố trí nhớ bằng cách tạo ra một cái nhìn trực quan về thông tin.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Kỹ thuật 17: Ma trận Phân Tố</strong></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="hướng-dẫn-thực-hiện-ma-trận-phân-tố"><a class="anchor" href="#hướng-dẫn-thực-hiện-ma-trận-phân-tố"></a>Hướng dẫn thực hiện Ma trận Phân Tố:</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Sắp xếp cuốn sách theo thứ tự thời gian</strong> :
+Bắt đầu bằng cách sắp xếp các cuốn sách hoặc tài liệu bạn đã thu thập theo thứ tự thời gian. Điều này giúp bạn có cái nhìn rõ hơn về sự phát triển của các ý tưởng hoặc chủ đề theo thời gian.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Thông tin thư mục</strong> : Tên tác giả, tiêu đề, nhà xuất bản, năm xuất bản.</p>
+</li>
+<li>
+<p><strong>Năm phát hành</strong> : Ghi chú năm mà cuốn sách hoặc tài liệu được phát hành.</p>
+</li>
+<li>
+<p><strong>Mục đích nghiên cứu</strong> : Câu hỏi nghiên cứu hoặc mục tiêu chính của nghiên cứu.</p>
+</li>
+<li>
+<p><strong>Biến độc lập và biến phụ thuộc</strong> : Xác định cái gì ảnh hưởng đến cái gì.</p>
+</li>
+<li>
+<p><strong>Thiết kế nghiên cứu</strong> : Phương pháp mà nghiên cứu được thực hiện.</p>
+</li>
+<li>
+<p><strong>Đối tượng nghiên cứu</strong> : Ai là đối tượng của nghiên cứu.</p>
+</li>
+<li>
+<p><strong>Tập dữ liệu</strong> : Thông tin về dữ liệu đã được thu thập.</p>
+</li>
+<li>
+<p><strong>Phương pháp thu thập dữ liệu</strong> : Cách thức mà dữ liệu được thu thập.</p>
+</li>
+<li>
+<p><strong>Chỉ số và thang đo</strong> : Các chỉ số sử dụng trong nghiên cứu và cách thức đo lường.</p>
+</li>
+<li>
+<p><strong>Phương pháp thống kê và giả định</strong> : Các phương pháp thống kê được áp dụng và giả định đi kèm.</p>
+</li>
+<li>
+<p><strong>Tầm quan trọng hoặc ý nghĩa của nghiên cứu</strong> : Tại sao nghiên cứu này lại quan trọng.</p>
+</li>
+<li>
+<p><strong>Nhược điểm</strong> : Các giới hạn hoặc nhược điểm trong nghiên cứu.</p>
+</li>
+<li>
+<p><strong>Trích dẫn</strong> : Những tài liệu khác được tham khảo trong nghiên cứu.</p>
+</li>
+<li>
+<p><strong>Người tài trợ</strong> : Ai đã tài trợ cho nghiên cứu này.
+*</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Tạo Ma trận Phân Tố</strong> :
+Tạo một bảng hoặc ma trận để tổ chức các yếu tố bạn đã xác định. Mỗi hàng có thể đại diện cho một cuốn sách hoặc tài liệu, và mỗi cột đại diện cho một yếu tố mà bạn đã rút ra.| Tên Tài liệu | Năm phát hành | Mục đích nghiên cứu | Biến độc lập | Biến phụ thuộc | Thiết kế nghiên cứu | Đối tượng nghiên cứu | Tập dữ liệu | Phương pháp thu thập dữ liệu | Chỉ số và thang đo | Phương pháp thống kê | Nhược điểm | Tài trợ   |
+| --------------- | ---------------- | ------------------------ | ---------------- | ----------------- | ----------------------- | -------------------------- | -------------- | ---------------------------------- | ---------------------- | ------------------------- | -------------- | ----------- |
+| Tài liệu 1    | 2021             | Câu hỏi 1              | A                | B                 | Thiết kế A            | Nhóm 1                    | Dữ liệu 1    | Phương pháp 1                   | Chỉ số 1             | Phương pháp 1          | Giới hạn 1   | Tổ chức 1 |
+| Tài liệu 2    | 2020             | Câu hỏi 2              | C                | D                 | Thiết kế B            | Nhóm 2                    | Dữ liệu 2    | Phương pháp 2                   | Chỉ số 2             | Phương pháp 2          | Giới hạn 2   | Tổ chức 2 |</p>
+</li>
+<li>
+<p><strong>Phân tích và so sánh</strong> :
+Sử dụng ma trận này để phân tích và so sánh các tài liệu khác nhau. Điều này giúp bạn thấy được sự khác biệt và tương đồng giữa các nghiên cứu, từ đó rút ra những kết luận quan trọng cho nghiên cứu của riêng bạn.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Kỹ thuật 18: Ma Trận Thời Gian (Phương Pháp 9-Cửa Sổ)</strong></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="hướng-dẫn-thực-hiện-ma-trận-thời-gian"><a class="anchor" href="#hướng-dẫn-thực-hiện-ma-trận-thời-gian"></a>Hướng dẫn thực hiện Ma trận Thời gian:</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Tạo Ma trận 3x3</strong> :
+Vẽ một ma trận với 3 hàng và 3 cột.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Hàng ngang</strong> : Ghi chú "Quá khứ", "Hiện tại", "Tương lai".</p>
+</li>
+<li>
+<p><strong>Cột dọc</strong> : Ghi chú "Cao (mức vĩ mô)", "Cùng", "Thấp (mức vi mô)".</p>
+</li>
+<li>
+<p><strong>Cao (mức vĩ mô)CùngThấp (mức vi mô)Quá khứHiện tạiSự kiện chínhTương lai</strong></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Xác định Sự kiện Chính</strong> :
+Đặt sự kiện chính của bạn vào ô giữa của ma trận (ô giao giữa "Hiện tại" và "Cùng"). Đây là sự kiện hoặc tình huống mà bạn muốn phân tích.</p>
+</li>
+<li>
+<p><strong>Khám Phá Quá Khứ</strong> :</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Ở hàng "Quá khứ", suy nghĩ về những gì đã xảy ra để sự kiện chính trở thành sự thật. Ghi chú những sự kiện, nguyên nhân, hoặc điều kiện đã xảy ra trước đó trong các ô tương ứng với "Cao", "Cùng", và "Thấp".</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Khám Phá Tương Lai</strong> :</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Ở hàng "Tương lai", suy nghĩ về những gì có thể xảy ra sau sự kiện chính. Ghi chú dự đoán hoặc khả năng trong các ô tương ứng với "Cao", "Cùng", và "Thấp".</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Xem Xét Các Cấp Độ</strong> :</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Kiểm tra và phân tích các ô của ma trận. Đối với ô "Cao (mức vĩ mô)", xác định những tác động lớn hơn liên quan đến sự kiện chính. Đối với ô "Thấp (mức vi mô)", xác định những tác động nhỏ hơn hoặc chi tiết hơn. Nếu bạn không biết rõ, có thể để trống ô đó.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Kiểm Tra Tính Nhất Quán</strong> :</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Đánh giá tính nhất quán giữa các thông tin mà bạn đã ghi lại. Nếu có sự mâu thuẫn hoặc không khớp, hãy xem xét và điều chỉnh lại cho phù hợp.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Đánh Giá Sự Mâu Thuẫn</strong> :</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Đánh giá mức độ mâu thuẫn giữa từng ô trong ma trận. Hãy xác định xem liệu các thông tin bạn đã điền vào có hỗ trợ lẫn nhau hay không, và nếu có sự mâu thuẫn thì nó nằm ở đâu.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="lợi-ích-của-kỹ-thuật-ma-trận-thời-gian"><a class="anchor" href="#lợi-ích-của-kỹ-thuật-ma-trận-thời-gian"></a>Lợi ích của Kỹ thuật Ma trận Thời gian:</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Phân Tích Chiều Sâu</strong> : Giúp bạn phân tích một sự kiện hoặc tình huống từ nhiều khía cạnh khác nhau, bao gồm quá khứ, hiện tại và tương lai.</p>
+</li>
+<li>
+<p><strong>Nhận Diện Xu Hướng</strong> : Hỗ trợ nhận diện các xu hướng hoặc mô hình trong một bối cảnh lớn hơn.</p>
+</li>
+<li>
+<p><strong>Ra Quyết Định Thông Minh</strong> : Giúp bạn đưa ra quyết định dựa trên sự hiểu biết sâu sắc về các yếu tố liên quan đến sự kiện.</p>
+</li>
+<li>
+<p><strong>Đưa Ra Kế Hoạch</strong> : Cung cấp thông tin để lên kế hoạch cho tương lai một cách hiệu quả hơn bằng cách hiểu rõ những gì đã xảy ra và sẽ xảy ra.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Kỹ thuật 19: Tóm tắt Đoạn văn</strong></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="hướng-dẫn-thực-hiện-tóm-tắt-đoạn-văn"><a class="anchor" href="#hướng-dẫn-thực-hiện-tóm-tắt-đoạn-văn"></a>Hướng dẫn thực hiện Tóm tắt Đoạn văn:</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Chọn một cuốn sách</strong> :
+Bắt đầu bằng cách chọn một cuốn sách mà bạn muốn nghiên cứu hoặc tìm hiểu sâu hơn.</p>
+</li>
+<li>
+<p><strong>Đánh số các đoạn văn</strong> :
+Đánh số các đoạn văn trong cuốn sách mà bạn muốn tóm tắt. Điều này giúp bạn dễ dàng theo dõi và tham khảo.</p>
+</li>
+<li>
+<p><strong>Chuẩn bị một trang trắng</strong> :
+Tạo một trang trắng và đánh dấu nó để tổ chức các tóm tắt của bạn. Bạn có thể tạo các tiêu đề cho từng đoạn văn đã đánh số.</p>
+</li>
+<li>
+<p><strong>Điền vào các tóm tắt</strong> :</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Ghi lại tóm tắt cho từng đoạn văn (chỉ các điểm khó hiểu hoặc quan trọng).</p>
+</li>
+<li>
+<p>Tập trung vào việc làm rõ những khái niệm hoặc ý tưởng mà bạn cảm thấy khó hiểu.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Ghi chú khác</strong> :</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Bạn không cần phải hiểu mọi thứ trong sách ngay lập tức. Điều quan trọng là phải tập trung vào những chủ đề cốt lõi mà bạn chưa hiểu rõ.</p>
+</li>
+<li>
+<p>Nếu bạn không hiểu một phần nào đó, hãy ở lại và làm việc để tìm ra cách hiểu nó. Đừng bỏ qua những phần cơ bản này.</p>
+</li>
+<li>
+<p>Nên quay lại và đọc lại những đoạn này cho đến khi bạn hiểu rõ.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Tóm tắt Tổng quan</strong> :</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Cuối cùng, hãy cố gắng nắm bắt ý tưởng cơ bản của cuốn sách.</p>
+</li>
+<li>
+<p>Bạn không cần phải viết lại những gì bạn đã biết trước đó, mà chỉ cần tập trung vào những điểm mới hoặc khó khăn.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="ma-trận-tóm-tắt"><a class="anchor" href="#ma-trận-tóm-tắt"></a>Ma trận Tóm tắt</h3>
+<div class="paragraph">
+<p>Từ những gì bạn đã tóm tắt, bạn có thể xây dựng một ma trận tóm tắt để tổ chức thông tin một cách hệ thống hơn.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="hướng-dẫn-tạo-ma-trận-tóm-tắt"><a class="anchor" href="#hướng-dẫn-tạo-ma-trận-tóm-tắt"></a>Hướng dẫn tạo Ma trận Tóm tắt:</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Tạo một bảng</strong> :
+Tạo một bảng với các cột để ghi lại thông tin chính từ các đoạn văn mà bạn đã tóm tắt. Các cột có thể bao gồm:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Đoạn Văn</strong> : Số hiệu hoặc tên của đoạn.</p>
+</li>
+<li>
+<p><strong>Tóm Tắt</strong> : Nội dung chính hoặc ý tưởng của đoạn.</p>
+</li>
+<li>
+<p><strong>Khó Khăn</strong> : Những điểm bạn vẫn chưa hiểu hoặc cần làm rõ.</p>
+</li>
+<li>
+<p><strong>Ý Tưởng Liên Quan</strong> : Kết nối giữa đoạn văn này với những ý tưởng khác trong cuốn sách hoặc tài liệu bạn đang nghiên cứu.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Điền thông tin</strong> :
+Điền vào bảng từ những tóm tắt mà bạn đã thực hiện.</p>
+</li>
+<li>
+<p><strong>Phân tích và so sánh</strong> :
+Sử dụng bảng này để phân tích và so sánh các ý tưởng trong cuốn sách. Điều này giúp bạn nắm bắt mối liên hệ giữa các đoạn văn và cải thiện khả năng hiểu biết tổng thể của bạn về nội dung.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="lợi-ích-của-kỹ-thuật-tóm-tắt-đoạn-văn"><a class="anchor" href="#lợi-ích-của-kỹ-thuật-tóm-tắt-đoạn-văn"></a>Lợi ích của Kỹ thuật Tóm tắt Đoạn văn:</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Cải thiện Kỹ năng Tóm tắt</strong> : Giúp bạn phát triển khả năng tóm tắt và ghi nhớ thông tin quan trọng.</p>
+</li>
+<li>
+<p><strong>Xác định Điểm Yếu</strong> : Giúp bạn nhận diện những khía cạnh khó khăn trong nội dung mà bạn cần tập trung vào.</p>
+</li>
+<li>
+<p><strong>Nâng cao Khả năng Hiểu Biết</strong> : Bằng cách làm rõ các ý tưởng khó khăn, bạn sẽ có thể hiểu rõ hơn về toàn bộ cuốn sách.</p>
+</li>
+<li>
+<p><strong>Tổ chức Thông tin</strong> : Cung cấp một cách có hệ thống để tổ chức và xem xét lại thông tin đã học.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Kỹ thuật 20: Phương pháp 6 ô của Suzuki</strong></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="hướng-dẫn-thực-hiện-phương-pháp-6-ô"><a class="anchor" href="#hướng-dẫn-thực-hiện-phương-pháp-6-ô"></a>Hướng dẫn thực hiện Phương pháp 6 ô:</h3>
+<div class="paragraph">
+<p>Phương pháp này chủ yếu được sử dụng để học các ngôn ngữ nước ngoài. Nó phân tích một đoạn văn hoặc câu đến mức độ cơ bản nhất, do đó sẽ tốn nhiều thời gian. Các ô được chia thành 6 phần như sau:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Văn bản gốc</strong> :</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Viết lại câu hoặc đoạn văn bạn muốn phân tích.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Từ vựng kỹ thuật</strong> :</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Ghi lại những từ hoặc cụm từ quan trọng mà bạn không quen thuộc và cần tìm hiểu thêm.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Thông tin tìm kiếm</strong> :</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Tóm tắt những điều bạn đã tìm kiếm về văn bản hoặc các từ ngữ kỹ thuật trong ô trước. Điều này có thể bao gồm định nghĩa từ, cách sử dụng, hoặc bối cảnh văn hóa.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Câu hỏi và quá trình suy nghĩ</strong> :</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Đặt ra các câu hỏi về văn bản và ghi lại quá trình suy nghĩ của bạn trong khi phân tích. Bạn có thể tự hỏi tại sao tác giả lại chọn từ ngữ này, hoặc ý nghĩa sâu xa của một cụm từ là gì.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Đi sâu vào những gì bạn không hiểu</strong> :</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Phân tích sâu hơn những phần bạn không hiểu. Hãy cố gắng tìm kiếm giải thích hoặc ví dụ để làm rõ.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Tóm tắt bằng lời của bạn</strong> :</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Tóm tắt đoạn văn hoặc câu văn bằng cách sử dụng ngôn ngữ của chính bạn. Điều này giúp bạn kiểm tra khả năng hiểu biết của mình.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Dịch thuật</strong> :</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Cuối cùng, dịch văn bản sang ngôn ngữ của bạn, chú ý đến cách mà ý nghĩa được chuyển tải.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="bối-cảnh-của-suzuki"><a class="anchor" href="#bối-cảnh-của-suzuki"></a>Bối cảnh của Suzuki</h3>
+<div class="paragraph">
+<p><strong>Suzuki</strong> là một nhà nghiên cứu người Nhật Bản làm việc với văn học Pháp. Trong thời gian học tập của mình, ông cảm thấy thất vọng vì phải viết những gì giáo sư dịch cho ông và chỉ ghi nhớ những điều đó. Ông không có thời gian để nghe và ghi chú cùng một lúc, và không thể giải thích những gì mình vừa sao chép. Chính vì vậy, ông phát triển kỹ thuật này để đi sâu vào văn bản một cách tự thân.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="thành-công-của-churchill-với-tư-cách-là-một-nhà-văn"><a class="anchor" href="#thành-công-của-churchill-với-tư-cách-là-một-nhà-văn"></a>Thành công của Churchill với tư cách là một nhà văn</h3>
+<div class="paragraph">
+<p><strong>Winston Churchill</strong> hầu như không vượt qua được kỳ thi ở Harrow, và ông là một trong những học sinh tệ nhất trong lớp. Tuy nhiên, những cuốn sách của ông trở thành best-seller. Nếu xem xét kỹ lưỡng, ông được coi là thất bại trong việc học Latin và Hy Lạp, nhưng lại xuất sắc trong tiếng Anh. Điều này là nhờ vào giáo viên tiếng Anh của ông, người đã ép ông phân tích và giải cấu trúc các câu từ nền tảng. Chính vì Churchill phải làm điều này lặp đi lặp lại, ông đã thành thạo tiếng Anh từ những kiến thức cơ bản nhất (danh từ, động từ, liên từ, v.v.).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="lợi-ích-của-phương-pháp-6-ô"><a class="anchor" href="#lợi-ích-của-phương-pháp-6-ô"></a>Lợi ích của Phương pháp 6 ô</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Sâu sắc</strong> : Giúp bạn phân tích văn bản một cách chi tiết, hiểu rõ cấu trúc ngôn ngữ.</p>
+</li>
+<li>
+<p><strong>Tăng cường từ vựng</strong> : Bằng cách tìm kiếm và ghi lại từ vựng kỹ thuật, bạn mở rộng vốn từ của mình.</p>
+</li>
+<li>
+<p><strong>Khả năng diễn đạt</strong> : Việc tóm tắt và dịch thuật giúp bạn nâng cao khả năng sử dụng ngôn ngữ.</p>
+</li>
+<li>
+<p><strong>Tư duy phản biện</strong> : Thúc đẩy quá trình tư duy phản biện thông qua các câu hỏi và phân tích sâu sắc.</p>
+</li>
+<li>
+<p><strong>Khả năng ghi nhớ</strong> : Phân tích từng phần nhỏ của văn bản giúp bạn ghi nhớ thông tin lâu hơn.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Phương pháp này không chỉ giúp bạn hiểu rõ văn bản mà còn tăng cường khả năng giao tiếp và viết của bạn trong ngôn ngữ đang học.</p>
+</div>
+<div class="paragraph">
+<p><strong>Kỹ thuật 21: Ghi chú bên</strong></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="hướng-dẫn-thực-hiện-ghi-chú-bên"><a class="anchor" href="#hướng-dẫn-thực-hiện-ghi-chú-bên"></a>Hướng dẫn thực hiện Ghi chú bên</h3>
+<div class="paragraph">
+<p>Ghi chú bên tương tự như việc ghi chú đơn giản mà bạn viết ở lề của sách. Tuy nhiên, lần này, bạn sẽ thực hiện điều này trên một bảng tính.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Tạo bảng tính</strong> :</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Mở một bảng tính mới (Excel, Google Sheets, hoặc phần mềm tương tự).</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Tạo các cột</strong> :</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Thiết lập các cột cho các thông tin bạn muốn ghi chú. Bạn có thể có các cột như:</p>
+</li>
+<li>
+<p><strong>Nội dung</strong> : Ghi lại thông tin chính hoặc ý tưởng quan trọng.</p>
+</li>
+<li>
+<p><strong>Ghi chú</strong> : Thêm các ghi chú cá nhân hoặc quan điểm của bạn về nội dung đó.</p>
+</li>
+<li>
+<p><strong>Tham chiếu</strong> : Ghi lại nguồn gốc hoặc nơi bạn tìm thấy thông tin này.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Thực hiện ghi chú</strong> :</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Khi bạn đọc một cuốn sách hoặc tài liệu, hãy dừng lại để ghi chú bên cạnh nội dung liên quan.</p>
+</li>
+<li>
+<p>Sử dụng những ghi chú này để làm nổi bật các điểm chính, câu hỏi hoặc nhận xét của bạn.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="lợi-ích-của-ghi-chú-bên"><a class="anchor" href="#lợi-ích-của-ghi-chú-bên"></a>Lợi ích của Ghi chú bên</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Tổ chức tốt hơn</strong> : Bằng cách ghi chú trên bảng tính, bạn có thể dễ dàng tổ chức và sắp xếp các ý tưởng.</p>
+</li>
+<li>
+<p><strong>Dễ dàng tìm kiếm</strong> : Việc lưu trữ thông tin trong bảng tính giúp bạn tìm kiếm và tham khảo nhanh chóng hơn.</p>
+</li>
+<li>
+<p><strong>Nhắc nhở và tăng cường ghi nhớ</strong> : Những ghi chú bên cạnh sẽ giúp bạn nhớ lại các ý tưởng chính và có thể củng cố khả năng ghi nhớ của bạn.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="tài-liệu-thêm-ghi-chú-về-phương-pháp"><a class="anchor" href="#tài-liệu-thêm-ghi-chú-về-phương-pháp"></a>Tài liệu thêm: Ghi chú về phương pháp</h3>
+<div class="paragraph">
+<p>Ngoài việc ghi chú bên, bạn cũng có thể tạo một phần tài liệu để ghi lại những điều khó nhớ hoặc điều bạn muốn nhớ:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Ghi chú các hình phạt của việc không biết</strong> :</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Viết ra những hậu quả có thể xảy ra nếu bạn không nắm vững kiến thức này. Điều này có thể là sự thiếu tự tin, mất cơ hội trong công việc, hoặc cảm thấy lạc lõng trong cuộc trò chuyện.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Ghi chú về lợi ích của việc nhớ</strong> :</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Đưa ra những lợi ích và giá trị của việc nhớ kiến thức này. Điều này có thể bao gồm việc tự tin hơn, cải thiện kỹ năng giao tiếp, và mở ra nhiều cơ hội trong cuộc sống cá nhân và nghề nghiệp.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="kết-luận"><a class="anchor" href="#kết-luận"></a>Kết luận</h3>
+<div class="paragraph">
+<p>Phương pháp ghi chú bên không chỉ giúp bạn tổ chức thông tin mà còn giúp bạn nâng cao khả năng ghi nhớ và hiểu biết sâu hơn về các chủ đề mà bạn đang học. Việc ghi lại các hình phạt và lợi ích cũng sẽ tạo động lực cho bạn trong quá trình học tập.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="tài-liệu-về-phương-pháp-ghi-chú"><a class="anchor" href="#tài-liệu-về-phương-pháp-ghi-chú"></a>Tài liệu về Phương pháp Ghi chú</h3>
+
+</div>
+<div class="sect2">
+<h3 id="ghi-chú-về-những-điều-khó-nhớ-hoặc-muốn-ghi-nhớ"><a class="anchor" href="#ghi-chú-về-những-điều-khó-nhớ-hoặc-muốn-ghi-nhớ"></a>Ghi chú về những điều khó nhớ hoặc muốn ghi nhớ</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Các điều khó nhớ</strong> :</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Khái niệm phức tạp</strong> : Các định nghĩa và lý thuyết khó hiểu trong lĩnh vực bạn đang nghiên cứu.</p>
+</li>
+<li>
+<p><strong>Dữ liệu thống kê</strong> : Con số hoặc biểu đồ mà bạn khó khăn để ghi nhớ.</p>
+</li>
+<li>
+<p><strong>Quy trình</strong> : Các bước trong một quy trình hoặc hệ thống phức tạp.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Ghi chú về các hình phạt của việc không biết</strong> :</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Thiếu tự tin</strong> : Không nắm vững kiến thức có thể khiến bạn cảm thấy không đủ khả năng trong các tình huống xã hội hoặc nghề nghiệp.</p>
+</li>
+<li>
+<p><strong>Mất cơ hội</strong> : Bạn có thể bỏ lỡ cơ hội thăng tiến trong công việc hoặc tham gia vào các cuộc thảo luận thú vị nếu không hiểu rõ các chủ đề liên quan.</p>
+</li>
+<li>
+<p><strong>Khó khăn trong việc giao tiếp</strong> : Thiếu kiến thức có thể dẫn đến những hiểu lầm hoặc khó khăn trong việc diễn đạt ý tưởng của bạn với người khác.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Ghi chú về lợi ích của việc nhớ</strong> :</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Tăng cường tự tin</strong> : Biết rõ về một chủ đề giúp bạn tự tin hơn khi tham gia vào các cuộc trò chuyện hoặc thảo luận.</p>
+</li>
+<li>
+<p><strong>Cải thiện khả năng ra quyết định</strong> : Kiến thức vững chắc cho phép bạn đưa ra các quyết định tốt hơn và có ý thức hơn trong công việc và cuộc sống.</p>
+</li>
+<li>
+<p><strong>Mở rộng cơ hội</strong> : Nắm vững kiến thức có thể tạo ra nhiều cơ hội nghề nghiệp và cá nhân, từ việc nhận được những lời mời hợp tác đến việc được giao phó những nhiệm vụ quan trọng hơn.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cách-thực-hiện"><a class="anchor" href="#cách-thực-hiện"></a>Cách Thực Hiện</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Tạo một bảng hoặc danh sách</strong> : Bắt đầu bằng việc lập danh sách những điều bạn muốn ghi nhớ và tổ chức chúng theo các hạng mục trên.</p>
+</li>
+<li>
+<p><strong>Sử dụng màu sắc và ký hiệu</strong> : Đánh dấu các phần quan trọng bằng màu sắc khác nhau hoặc các ký hiệu để dễ dàng nhận diện.</p>
+</li>
+<li>
+<p><strong>Xem lại thường xuyên</strong> : Đảm bảo rằng bạn xem lại các ghi chú này thường xuyên để củng cố trí nhớ của mình.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="kết-luận-2"><a class="anchor" href="#kết-luận-2"></a>Kết luận</h3>
+<div class="paragraph">
+<p>Việc ghi chú về các điều khó nhớ, cùng với các hình phạt và lợi ích của việc nhớ, sẽ giúp bạn giữ vững động lực trong quá trình học tập và phát triển bản thân. Bằng cách nhận thức rõ ràng về những gì bạn cần học và những gì sẽ xảy ra nếu bạn không học, bạn sẽ có khả năng thúc đẩy bản thân tốt hơn.</p>
+</div>
+<hr>
+</div>
+<h1 id="chương-8-ghi-nhớ" class="sect0"><a class="anchor" href="#chương-8-ghi-nhớ"></a>chương 8 :ghi nhớ</h1>
+<div class="sect2">
+<h3 id="kỹ-thuật-22-xác-định-những-ưu-điểm-của-việc-ghi-nhớ"><a class="anchor" href="#kỹ-thuật-22-xác-định-những-ưu-điểm-của-việc-ghi-nhớ"></a>kỹ thuật 22: Xác định những ưu điểm của việc ghi nhớ</h3>
+<div class="paragraph">
+<p><strong>Ghi chú về những điều khó nhớ hoặc muốn ghi nhớ</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Những điều khó nhớ</strong> :</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Khái niệm phức tạp</strong> : Các lý thuyết khó hiểu hoặc khái niệm trừu tượng trong môn học của bạn.</p>
+</li>
+<li>
+<p><strong>Từ vựng mới</strong> : Những từ mới hoặc cụm từ trong một ngôn ngữ bạn đang học.</p>
+</li>
+<li>
+<p><strong>Số liệu thống kê và dữ liệu</strong> : Thông tin hoặc con số khó nhớ, đặc biệt trong các lĩnh vực như kinh tế hoặc khoa học.</p>
+</li>
+<li>
+<p><strong>Quy trình hoặc bước thực hiện</strong> : Các bước trong quy trình phức tạp mà bạn cần phải ghi nhớ.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Hình phạt của việc không biết</strong> :</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Thiếu tự tin</strong> : Việc không nắm vững kiến thức có thể làm bạn cảm thấy thiếu tự tin trong các cuộc thảo luận hoặc thuyết trình.</p>
+</li>
+<li>
+<p><strong>Mất cơ hội nghề nghiệp</strong> : Không biết có thể khiến bạn bỏ lỡ cơ hội việc làm hoặc thăng tiến trong sự nghiệp.</p>
+</li>
+<li>
+<p><strong>Khó khăn trong giao tiếp</strong> : Thiếu kiến thức có thể dẫn đến khó khăn trong việc truyền đạt ý tưởng của bạn, gây hiểu lầm hoặc ngăn cản giao tiếp hiệu quả.</p>
+</li>
+<li>
+<p><strong>Tốn thời gian</strong> : Bạn có thể phải dành nhiều thời gian hơn để tìm kiếm thông tin mà lẽ ra đã nhớ.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Lợi ích của việc nhớ</strong> :</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Tăng cường khả năng giao tiếp</strong> : Kiến thức vững chắc cho phép bạn giao tiếp rõ ràng và tự tin hơn.</p>
+</li>
+<li>
+<p><strong>Cải thiện kỹ năng ra quyết định</strong> : Nắm vững thông tin có thể giúp bạn đưa ra quyết định nhanh chóng và chính xác hơn trong công việc và cuộc sống hàng ngày.</p>
+</li>
+<li>
+<p><strong>Mở rộng cơ hội học tập</strong> : Kiến thức được ghi nhớ giúp bạn tham gia vào các cuộc thảo luận sâu sắc hơn và khám phá các khía cạnh mới của môn học.</p>
+</li>
+<li>
+<p><strong>Xây dựng nền tảng vững chắc</strong> : Việc ghi nhớ kiến thức cơ bản là cần thiết cho việc học các khái niệm phức tạp hơn trong tương lai.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cách-thực-hiện-2"><a class="anchor" href="#cách-thực-hiện-2"></a>Cách Thực Hiện</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Tạo một danh sách</strong> : Bắt đầu bằng cách lập danh sách những điều bạn muốn ghi nhớ và tổ chức chúng theo các hạng mục trên.</p>
+</li>
+<li>
+<p><strong>Sử dụng kỹ thuật ghi nhớ</strong> : Áp dụng các kỹ thuật như mnemonics, phương pháp lặp lại hoặc sử dụng hình ảnh để giúp việc ghi nhớ dễ dàng hơn.</p>
+</li>
+<li>
+<p><strong>Xem lại thường xuyên</strong> : Đặt lịch để xem lại các ghi chú này thường xuyên nhằm củng cố trí nhớ và làm mới kiến thức của bạn.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="kết-luận-3"><a class="anchor" href="#kết-luận-3"></a>Kết luận</h3>
+<div class="paragraph">
+<p>Việc xác định hình phạt của việc không biết và lợi ích của việc ghi nhớ là rất quan trọng trong quá trình học tập. Điều này không chỉ giúp bạn nhận thức rõ ràng hơn về giá trị của kiến thức mà còn tạo động lực cho bạn trong việc ghi nhớ và áp dụng nó trong thực tế.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="kỹ-thuật-23-pre-map-post-map"><a class="anchor" href="#kỹ-thuật-23-pre-map-post-map"></a>kỹ thuật 23 : Pre-Map &amp; Post-Map</h3>
+<div class="literalblock">
+<div class="content">
+<pre>**Mục đích** : Kỹ thuật này giúp bạn tổ chức ý tưởng và mối liên hệ giữa các thành phần mà bạn đã học, từ đó tạo ra một cái nhìn tổng quan về kiến thức của mình.</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cách-thực-hiện-3"><a class="anchor" href="#cách-thực-hiện-3"></a>Cách thực hiện</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Ghi chú tất cả các thành phần</strong> :</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Bắt đầu bằng cách viết ra tất cả các yếu tố hoặc thành phần liên quan đến chủ đề bạn đang nghiên cứu.</p>
+</li>
+<li>
+<p>Điều này có thể bao gồm định nghĩa, khái niệm, ví dụ, và các yếu tố liên quan khác.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Vẽ các mối liên hệ</strong> :</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Sử dụng các đường nối để kết nối các thành phần với nhau, thể hiện cách mà chúng liên quan đến nhau.</p>
+</li>
+<li>
+<p>Đảm bảo rằng các mối liên hệ này là rõ ràng và có ý nghĩa, phản ánh sự tương tác giữa các yếu tố.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Ghi chú các mối liên hệ</strong> :</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Ghi chú hoặc chú thích cho các mối liên hệ mà bạn đã vẽ ra.</p>
+</li>
+<li>
+<p>Giải thích lý do tại sao các thành phần này lại kết nối với nhau và tầm quan trọng của chúng trong bối cảnh lớn hơn.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Tạo sơ đồ</strong> :</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Bạn có thể tạo sơ đồ dựa trên việc bạn đã tham khảo điều gì đó trong quá trình xây dựng sơ đồ hay không.</p>
+</li>
+<li>
+<p>Sử dụng ma trận 2x2 để phân loại sơ đồ của bạn:</p>
+</li>
+<li>
+<p><strong>Trục ngang</strong> : Đã tham khảo (Yes/No)</p>
+</li>
+<li>
+<p><strong>Trục dọc</strong> : Đã học trước (Yes/No)</p>
+</li>
+<li>
+<p>Điều này giúp bạn hiểu rõ hơn về mức độ nắm vững của mình với các khái niệm và cách mà bạn xây dựng kiến thức.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="kết-quả-mong-đợi"><a class="anchor" href="#kết-quả-mong-đợi"></a>Kết quả mong đợi</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Khả năng kết nối kiến thức</strong> : Kỹ thuật này giúp bạn tạo ra một cái nhìn tổng quát hơn về chủ đề, đồng thời củng cố các kết nối giữa các khái niệm khác nhau.</p>
+</li>
+<li>
+<p><strong>Cải thiện trí nhớ</strong> : Khi bạn tự tay xây dựng sơ đồ và chú thích các mối liên hệ, bạn sẽ dễ dàng ghi nhớ thông tin hơn và thấy được sự liên quan giữa chúng.</p>
+</li>
+<li>
+<p><strong>Phát triển tư duy phản biện</strong> : Việc phân tích mối liên hệ giữa các thành phần sẽ giúp bạn phát triển kỹ năng tư duy phản biện và khả năng giải quyết vấn đề tốt hơn.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="kết-luận-4"><a class="anchor" href="#kết-luận-4"></a>Kết luận</h3>
+<div class="paragraph">
+<p>Kỹ thuật Pre-Map &amp; Post-Map là một công cụ mạnh mẽ để bạn có thể tổ chức và kết nối kiến thức một cách hiệu quả. Bằng cách vẽ ra các thành phần và mối liên hệ của chúng, bạn không chỉ củng cố hiểu biết mà còn tạo ra một tài liệu tham khảo quý giá cho việc học tập sau này.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="kỹ-thuật-24-chia-nhỏ-thời-gian-học-tập"><a class="anchor" href="#kỹ-thuật-24-chia-nhỏ-thời-gian-học-tập"></a>kỹ thuật 24: chia nhỏ thời gian học tập</h3>
+<div class="literalblock">
+<div class="content">
+<pre>**Mục đích** : Kỹ thuật này giúp bạn chia nhỏ thời gian học tập thành các khoảng thời gian ngắn (chẳng hạn 1 phút) để tập trung giải quyết các vấn đề hoặc học các khái niệm mà bạn chưa hiểu rõ.</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cách-thực-hiện-4"><a class="anchor" href="#cách-thực-hiện-4"></a>Cách thực hiện</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Chọn vấn đề cần giải quyết</strong> :</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Xác định một khái niệm hoặc vấn đề mà bạn đang gặp khó khăn.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Thực hiện trong khoảng thời gian ngắn</strong> :</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Dành ra một khoảng thời gian rất ngắn, khoảng 1 phút, để tập trung hoàn toàn vào việc suy nghĩ về vấn đề đó.</p>
+</li>
+<li>
+<p>Trong thời gian này, bạn có thể ghi chú ý tưởng, câu hỏi hoặc giải pháp mà bạn có thể nghĩ ra.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Ngắt quãng và xem xét</strong> :</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Sau 1 phút, hãy dừng lại và xem xét những gì bạn đã viết.</p>
+</li>
+<li>
+<p>Xem liệu có điểm nào cần làm rõ hơn hoặc có hướng đi mới nào để tiếp cận vấn đề không.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Lặp lại quá trình</strong> :</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Tiếp tục quay lại quy trình này cho đến khi bạn cảm thấy đã nắm bắt được vấn đề hoặc có thể giải quyết nó.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="kết-quả-mong-đợi-2"><a class="anchor" href="#kết-quả-mong-đợi-2"></a>Kết quả mong đợi</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Tăng cường sự tập trung</strong> : Việc chia nhỏ thời gian giúp bạn tập trung vào việc học mà không cảm thấy quá tải.</p>
+</li>
+<li>
+<p><strong>Khuyến khích sự sáng tạo</strong> : Thời gian ngắn có thể kích thích tư duy sáng tạo và giúp bạn tìm ra nhiều cách tiếp cận khác nhau cho một vấn đề.</p>
+</li>
+<li>
+<p><strong>Giải quyết vấn đề hiệu quả</strong> : Bạn sẽ dễ dàng hơn trong việc xử lý những khái niệm khó khăn và nhanh chóng thấy được sự tiến bộ của mình.</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+<h1 id="chương-9-cách-giải-quyết-những-vấn-đề-bạn-ko-biết" class="sect0"><a class="anchor" href="#chương-9-cách-giải-quyết-những-vấn-đề-bạn-ko-biết"></a>chương 9 :cách giải quyết những vấn đề bạn ko biết</h1>
+<div class="sect2">
+<h3 id="kỹ-thuật-25-sử-dụng-flowchart"><a class="anchor" href="#kỹ-thuật-25-sử-dụng-flowchart"></a>kỹ thuật 25: sử dụng flowchart</h3>
+<div class="literalblock">
+<div class="content">
+<pre>**Mục đích** : Sử dụng sơ đồ dòng để hướng dẫn quá trình giải quyết vấn đề và giúp bạn xác định các bước cần thực hiện khi bạn gặp khó khăn trong việc hiểu một khái niệm hoặc vấn đề nào đó.</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cách-thực-hiện-5"><a class="anchor" href="#cách-thực-hiện-5"></a>Cách thực hiện</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Xác định vấn đề</strong> :</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Viết ra vấn đề hoặc khái niệm mà bạn không hiểu.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Phân tích vấn đề</strong> :</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Sử dụng các câu hỏi để phân tích vấn đề:</p>
+</li>
+<li>
+<p>Vấn đề này liên quan đến khái niệm nào?</p>
+</li>
+<li>
+<p>Tôi đã biết gì về vấn đề này?</p>
+</li>
+<li>
+<p>Tôi đã thử những gì để giải quyết nó?</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Tạo sơ đồ dòng</strong> :</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Bắt đầu từ điểm đầu tiên với vấn đề.</p>
+</li>
+<li>
+<p>Tiếp tục xây dựng sơ đồ với các nhánh đại diện cho các câu hỏi và phản hồi của bạn.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Đánh giá các giải pháp</strong> :</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Liệt kê các giải pháp tiềm năng mà bạn nghĩ có thể áp dụng và đánh giá tính khả thi của từng giải pháp.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Lựa chọn phương án</strong> :</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Chọn phương án tốt nhất để thực hiện và đặt ra kế hoạch hành động.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<hr>
+</div>
+<div class="sect2">
+<h3 id="kết-luận-5"><a class="anchor" href="#kết-luận-5"></a>kết luận</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Sự rõ ràng trong tư duy</strong> : Sơ đồ dòng giúp bạn dễ dàng hơn trong việc xác định các yếu tố liên quan đến vấn đề và cách giải quyết nó.</p>
+</li>
+<li>
+<p><strong>Hệ thống hóa quá trình giải quyết vấn đề</strong> : Bạn sẽ có một cái nhìn tổng quát về cách thức tiếp cận vấn đề và không bỏ sót bất kỳ bước nào.</p>
+</li>
+<li>
+<p><strong>Tăng cường khả năng tự học</strong> : Khi bạn chủ động trong việc giải quyết vấn đề, bạn sẽ tự tin hơn trong việc học tập và nghiên cứu.</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+<h1 id="cách-ghi-nhó-tốt-hơn" class="sect0"><a class="anchor" href="#cách-ghi-nhó-tốt-hơn"></a><strong>Cách ghi nhó tốt hơn</strong></h1>
+<div class="paragraph">
+<p><strong>Cách hoạt động của não bộ</strong></p>
+</div>
+<div class="paragraph">
+<p>Để hiểu rõ hơn về cách ký ức được hình thành và truy xuất, chúng ta cần đi sâu vào các tế bào thần kinh và khớp thần kinh. Tế bào thần kinh là những khối xây dựng cơ bản của não và đóng vai trò quan trọng trong quá trình hình thành và lưu giữ ký ức. Các khớp thần kinh, mặt khác, là những cầu nối giúp các tế bào thần kinh giao tiếp với nhau. Khi chúng ta học một điều gì đó mới, các tín hiệu điện được truyền qua các khớp thần kinh, và từ đó tạo ra các chất dẫn truyền thần kinh giúp lưu trữ ký ức.</p>
+</div>
+<div class="paragraph">
+<p>Tuy nhiên, quá trình hình thành ký ức không chỉ là việc có nhiều khớp thần kinh hơn mà còn là cách chúng kết nối với nhau. Các khu vực khác nhau của não chịu trách nhiệm cho các khía cạnh khác nhau của việc học và ký ức. Ví dụ, vùng hippocampus và vỏ não trước trán tham gia vào việc phân tích các nhận thức và quyết định thông tin nào cần lưu trữ, trong khi amygdala đóng vai trò quan trọng trong việc tích hợp cảm xúc và ký ức. Chính nhờ sự tương tác phức tạp của các khu vực thần kinh khác nhau mà ký ức được hình thành, lưu trữ và truy xuất.</p>
+</div>
+<div class="paragraph">
+<p><strong>Cách hoạt động của ký ức</strong></p>
+</div>
+<div class="paragraph">
+<p>Ký ức là một quá trình phức tạp bao gồm nhiều giai đoạn. Các giai đoạn này là ký ức cảm giác, ký ức ngắn hạn, và ký ức dài hạn. Ký ức cảm giác là giai đoạn đầu tiên của ký ức, nhận và xử lý những ấn tượng thoáng qua từ các giác quan của bạn. Nó chịu trách nhiệm giữ lại thông tin thô trong một thời gian rất ngắn, không quá vài giây.</p>
+</div>
+<div class="paragraph">
+<p>Ký ức ngắn hạn là giai đoạn thứ hai của ký ức và giống như một kho lưu trữ giữ khoảng bốn đơn vị thông tin trong 20-30 giây. Trong giai đoạn này, não xử lý và lưu trữ thông tin hiện đang sử dụng, chẳng hạn như một số điện thoại, một địa chỉ, hoặc một tin nhắn ngắn.</p>
+</div>
+<div class="paragraph">
+<p>Khi nói đến ký ức, chúng ta thường nghĩ đến ký ức dài hạn. Giai đoạn này chịu trách nhiệm lưu trữ và truy xuất thông tin trong một khoảng thời gian dài. Ký ức dài hạn có dung lượng rất lớn và là nơi lưu trữ những ký ức quan trọng và có ý nghĩa nhất.</p>
+</div>
+<div class="paragraph">
+<p>Để chuyển thông tin từ ký ức ngắn hạn sang ký ức dài hạn, bạn cần sử dụng một kỹ thuật gọi là lặp lại cách quãng (spaced repetition). Kỹ thuật này bao gồm việc lặp lại những gì bạn muốn ghi nhớ qua nhiều ngày để tăng cường các kết nối khớp thần kinh giữa các tế bào thần kinh. Tuy nhiên, việc này không chỉ là lặp lại mà còn liên quan đến các quá trình mã hóa, lưu trữ, và truy xuất. Mã hóa là quá trình chuyển đổi thông tin thành mã có ý nghĩa để có thể lưu trữ trong ký ức, trong khi lưu trữ là quá trình giữ lại thông tin qua thời gian. Cuối cùng, truy xuất là quá trình truy cập thông tin đã lưu trữ khi cần.</p>
+</div>
+<div class="paragraph">
+<p><strong>Những Hiểu Lầm Thường Gặp Về Việc Học Tập và Ghi Nhớ</strong></p>
+</div>
+<div class="paragraph">
+<p>Có nhiều hiểu lầm về quá trình học tập và ghi nhớ có thể cản trở tiến bộ của một người. Một trong những hiểu lầm phổ biến là trí thông minh là một đặc điểm cố định và khả năng ghi nhớ hay học tập không thể cải thiện được. Tuy nhiên, thực tế là bất cứ ai cũng có thể cải thiện kỹ năng ghi nhớ và học tập thông qua việc rèn luyện có chủ đích và kiên trì.</p>
+</div>
+<div class="paragraph">
+<p>Một quan niệm sai lầm phổ biến khác là tin rằng nghỉ ngơi trong quá trình học hoặc ôn tập là lãng phí thời gian. Thực tế, nghỉ ngơi là một yếu tố quan trọng trong học tập hiệu quả. Khi bạn nghỉ ngơi, chế độ làm việc khuếch tán của não hoạt động ngầm, tạo ra các kết nối thần kinh mới và cho phép bạn nhìn nhận vấn đề từ những góc độ khác nhau, giúp quá trình học trở nên toàn diện và sâu sắc hơn.</p>
+</div>
+<div class="paragraph">
+<p>Bằng cách hiểu về khoa học đằng sau việc học và ghi nhớ, một người có thể tiếp cận quá trình học tập với tư duy tích cực hơn và tập trung vào việc áp dụng các chiến lược hiệu quả. Với các kỹ thuật phù hợp, bất cứ ai cũng có thể học kiến thức mới một cách sâu sắc và nhanh chóng, làm cho quá trình học tập trở nên thú vị và bổ ích hơn. Ngoài ra, có rất nhiều công cụ và tài nguyên có sẵn để giúp cải thiện khả năng học và ghi nhớ, bao gồm sơ đồ tư duy, phương pháp ghi nhớ, nhắc lại theo khoảng thời gian và nhiều hơn nữa.</p>
+</div>
+<div class="paragraph">
+<p><strong>Các Kỹ Thuật ghi nhớ Hiệu Quả</strong></p>
+</div>
+<div class="paragraph">
+<p>Sau khi đã phá bỏ một số hiểu lầm, hãy cùng tìm hiểu một vài kỹ thuật đã được chứng minh là hiệu quả cho quá trình học tập. Những kỹ thuật này tận dụng cách bộ não chúng ta xử lý và lưu trữ thông tin. Hãy bắt đầu nào!</p>
+</div>
+<div class="paragraph">
+<p>Gợi Nhớ (Recall)</p>
+</div>
+<div class="paragraph">
+<p>Gợi nhớ là một chiến lược hiệu quả để cải thiện khả năng ghi nhớ vì nó làm mạnh các kết nối thần kinh giữa các tế bào thần kinh. Khi bạn chủ động gọi lại thông tin từ trí nhớ, bạn đang rèn luyện não và giúp việc truy xuất thông tin trở nên dễ dàng hơn trong tương lai. Kỹ thuật này có thể được so sánh như việc tập luyện cơ bắp cho não, và cũng giống như tập thể dục, việc luyện tập thường xuyên là điều cần thiết.</p>
+</div>
+<div class="paragraph">
+<p>Để áp dụng gợi nhớ hiệu quả trong thói quen học tập, hãy bắt đầu bằng cách tự kiểm tra kiến thức bạn đang học. Ví dụ, nếu bạn đang ôn thi lịch sử, hãy thử gợi nhớ các ngày và sự kiện quan trọng mà không cần nhìn vào ghi chú. Điều này sẽ giúp củng cố các đường dẫn thần kinh liên quan đến thông tin đó và làm cho việc ghi nhớ trở nên dễ dàng hơn trong tương lai. Một kỹ thuật hiệu quả khác là sử dụng thẻ nhớ (flashcards), cho phép bạn gợi nhớ thông tin từ trí nhớ và kiểm tra bản thân với các khái niệm hoặc thuật ngữ cụ thể.</p>
+</div>
+<div class="paragraph">
+<p>Nguyên nhân khiến gợi nhớ trở nên hiệu quả là vì nó củng cố các kết nối thần kinh giữa các tế bào thần kinh. Khi bạn lặp lại việc gọi lại thông tin từ trí nhớ, bạn đang củng cố các đường dẫn thần kinh liên quan đến thông tin đó. Điều này làm cho việc truy xuất thông tin trở nên dễ dàng hơn trong tương lai, vì các đường dẫn đã được củng cố và thông tin trở nên dễ tiếp cận hơn.</p>
+</div>
+<div class="paragraph">
+<p>Ngoài gợi nhớ, còn có các chiến lược khác giúp cải thiện khả năng ghi nhớ. Nhắc lại theo khoảng thời gian (Spaced Repetition) là một chiến lược như vậy, trong đó bạn lặp lại những gì đang cố ghi nhớ qua nhiều ngày để củng cố các kết nối thần kinh. Phương pháp phân đoạn thông tin (Chunking) là một chiến lược khác, giúp bạn ghép các thông tin nhỏ lại theo ý nghĩa và sử dụng. Điều này cho phép bạn gắn kết ý nghĩa vào khái niệm hoặc ý tưởng, giúp chúng dễ nhớ hơn. Bằng cách kết hợp các kỹ thuật này vào thói quen học tập của mình, bạn có thể tối ưu hóa quá trình học và ghi nhớ thông tin hiệu quả hơn.</p>
+</div>
+<div class="paragraph">
+<p>Nhắc Lại Theo Khoảng Thời Gian (Spaced Repetition)</p>
+</div>
+<div class="paragraph">
+<p>Nhắc lại theo khoảng thời gian là một kỹ thuật mạnh mẽ giúp bạn cải thiện khả năng ghi nhớ. Nó bao gồm việc lặp lại những gì bạn đang cố ghi nhớ qua nhiều ngày để củng cố các kết nối thần kinh trong não. Kỹ thuật này, giống như việc tưới cây, cần đúng lượng lặp lại ở những khoảng thời gian phù hợp để đạt được sự phát triển tối ưu.</p>
+</div>
+<div class="paragraph">
+<p>Để sử dụng nhắc lại theo khoảng thời gian hiệu quả, điều quan trọng là cần lập một lịch trình về thời gian và tần suất để lặp lại tài liệu. Ví dụ, nếu bạn đang cố ghi nhớ danh sách từ vựng trong một ngôn ngữ nước ngoài, bạn có thể bắt đầu bằng cách học các từ trong vài phút mỗi ngày trong một tuần. Sau đó, bạn có thể lặp lại danh sách các từ mỗi hai ngày trong hai tuần tiếp theo, và sau đó là một lần mỗi tuần trong tháng tiếp theo. Lịch nhắc lại theo khoảng thời gian này cho phép các kết nối thần kinh trong não phát triển tối ưu, giúp bạn ghi nhớ thông tin tốt hơn.</p>
+</div>
+<div class="paragraph">
+<p>Một ví dụ khác về nhắc lại theo khoảng thời gian là khi học chơi một nhạc cụ. Thay vì tập luyện hàng giờ liền, thường thì hiệu quả hơn khi luyện tập trong thời gian ngắn, kèm theo các khoảng nghỉ để cho não bộ xử lý thông tin mới. Bằng cách giãn cách các buổi tập và lặp lại tài liệu trong nhiều ngày, bạn có thể cải thiện khả năng ghi nhớ và kỹ năng tổng thể của mình.</p>
+</div>
+<div class="paragraph">
+<p>Nhắc lại theo khoảng thời gian hoạt động dựa trên cách bộ não xử lý thông tin một cách tự nhiên. Khi bạn học điều gì đó mới, bộ não tạo ra các kết nối mới giữa các tế bào thần kinh để lưu trữ thông tin. Tuy nhiên, các kết nối này lúc đầu khá yếu và dễ quên. Bằng cách lặp lại tài liệu trong nhiều ngày, các kết nối này trở nên mạnh mẽ và bền vững hơn, giúp việc gọi lại thông tin sau này dễ dàng hơn. Kỹ thuật này cũng giúp ngăn ngừa việc quên bằng cách làm mới trí nhớ theo các khoảng thời gian, từ đó tăng cường các kết nối thần kinh trong não.</p>
+</div>
+<div class="paragraph">
+<p>Trộn Lẫn (Interleaving)</p>
+</div>
+<div class="paragraph">
+<p>Trộn lẫn là một kỹ thuật rất hiệu quả để học tập và luyện tập các kỹ năng hoặc khái niệm. Nó bao gồm việc trộn lẫn các loại bài tập hoặc tài liệu khác nhau, giúp bạn ghi nhớ và áp dụng thông tin tốt hơn. Chìa khóa của trộn lẫn hiệu quả là đảm bảo rằng bạn liên tục chuyển đổi giữa các loại bài tập hoặc tài liệu theo cách giúp não tạo ra các kết nối mới giữa các ý tưởng và suy nghĩ linh hoạt và thích ứng hơn. Điều này dẫn đến sự hiểu biết sâu sắc hơn và học tập hiệu quả hơn.</p>
+</div>
+<div class="paragraph">
+<p>Ví dụ, nếu bạn đang học một ngôn ngữ mới, bạn có thể bắt đầu bằng cách học từ vựng cơ bản và các quy tắc ngữ pháp. Tuy nhiên, thay vì chỉ lặp lại các bài tập tương tự nhiều lần, bạn có thể thử trộn lẫn các loại bài tập khác nhau, như là luyện tập từ vựng, ngữ pháp và đọc hiểu liên tục. Điều này buộc não của bạn phải chuyển đổi giữa các loại vấn đề khác nhau, giúp bạn ghi nhớ và áp dụng thông tin tốt hơn.</p>
+</div>
+<div class="paragraph">
+<p>Một ví dụ khác của trộn lẫn là trong tập luyện thể thao. Thay vì thực hiện cùng một bài tập nhiều lần, các vận động viên có thể trộn lẫn các bài tập của mình. Ví dụ, một cầu thủ bóng rổ có thể luyện tập ném bóng, dẫn bóng và chuyền bóng liên tục thay vì chỉ tập trung vào một kỹ năng trong thời gian dài. Điều này buộc cầu thủ phải thích nghi với các loại thách thức khác nhau và suy nghĩ một cách linh hoạt và thích ứng, từ đó nâng cao hiệu suất tổng thể.</p>
+</div>
+<div class="paragraph">
+<p>Nguyên nhân khiến trộn lẫn trở nên hiệu quả là vì nó buộc não của bạn phải chuyển đổi liên tục giữa các loại vấn đề khác nhau, giúp xây dựng các kết nối thần kinh mới và củng cố các kết nối đã có. Bằng cách liên tục thử thách não để thích ứng với các tình huống mới, bạn đang rèn luyện nó để trở nên linh hoạt và thích ứng, giúp bạn hiểu sâu hơn và học tập hiệu quả hơn.</p>
+</div>
+<div class="paragraph">
+<p>Ghi nhớ (Mnemonics) là một công cụ hỗ trợ trí nhớ hiệu quả, giúp bạn nhớ thông tin bằng cách tạo ra các liên tưởng giữa những thông tin muốn ghi nhớ và những điều bạn đã biết. Phương pháp này hiệu quả vì não bộ được thiết kế để nhớ những điều có ý nghĩa và kết nối với các thông tin khác.</p>
+</div>
+<div class="paragraph">
+<p>Một cách sử dụng ghi nhớ là tạo ra một câu dễ nhớ hoặc một từ viết tắt đại diện cho một danh sách các mục. Ví dụ, để nhớ các màu sắc của cầu vồng theo thứ tự, bạn có thể dùng từ viết tắt ROYGBIV (đỏ, cam, vàng, lục, lam, chàm, tím). Một cách khác là tạo ra một hình ảnh đáng nhớ đại diện cho một khái niệm. Ví dụ, để nhớ sự khác biệt giữa thời tiết và khí hậu, bạn có thể tưởng tượng một người đàn ông cầm ô (thời tiết) đứng cạnh một cái cây (khí hậu).</p>
+</div>
+<div class="paragraph">
+<p>Để sử dụng ghi nhớ hiệu quả, điều quan trọng là tạo ra các liên tưởng rõ ràng, có ý nghĩa và dễ nhớ. Bạn cũng nên sử dụng ghi nhớ theo cách phù hợp với bản thân. Ví dụ, nếu bạn có mối liên hệ mạnh mẽ giữa một loại thực phẩm và một ký ức, bạn có thể dùng loại thực phẩm đó trong ghi nhớ để giúp nhớ thông tin.</p>
+</div>
+<div class="paragraph">
+<p>Nhìn chung, ghi nhớ là một công cụ mạnh mẽ giúp bạn nhớ thông tin hiệu quả hơn. Bằng cách tạo liên kết giữa thông tin mới và những gì đã biết, bạn có thể cải thiện trí nhớ và dễ dàng nhớ lại thông tin.</p>
+</div>
+<div class="paragraph">
+<p><strong>Phương pháp Cung điện Trí nhớ (Memory Palace)</strong></p>
+</div>
+<div class="paragraph">
+<p>Phương pháp Cung điện Trí nhớ là một chiến lược ghi nhớ xuất sắc giúp cải thiện trí nhớ. Kỹ thuật này bao gồm việc tạo ra một bản đồ tinh thần về một địa điểm quen thuộc, chẳng hạn như ngôi nhà hoặc nơi làm việc của bạn, và gán mỗi mục bạn muốn nhớ với một vị trí cụ thể tại nơi đó. Bằng cách này, bạn có thể cải thiện đáng kể khả năng nhớ của mình.</p>
+</div>
+<div class="paragraph">
+<p>Để sử dụng phương pháp này hiệu quả, hãy bắt đầu bằng cách chọn một địa điểm mà bạn quen thuộc và có cấu trúc cụ thể, chẳng hạn như ngôi nhà hoặc một tòa nhà. Sau đó, tưởng tượng bạn đang đi qua địa điểm đó và xác định các đối tượng hoặc điểm mốc nổi bật. Ví dụ, nếu bạn chọn căn hộ của mình, bạn có thể gán ghế sofa với màu đỏ, bàn ăn với bình hoa và nhà bếp với mùi cà phê.</p>
+</div>
+<div class="paragraph">
+<p>Khi đã xác định các điểm mốc này, bạn có thể gán mỗi mục bạn muốn nhớ với một vị trí cụ thể trong bản đồ tinh thần của mình. Ví dụ, nếu bạn muốn nhớ một danh sách các món cần mua, bạn có thể gán táo với giỏ trái cây trên kệ bếp, bánh mì với hộp bánh trên kệ, và sữa với tủ lạnh trong bếp. Bằng cách này, khi cần nhớ lại các món đồ, bạn chỉ cần hình dung bản đồ tinh thần về nhà của mình và nhớ lại vị trí của từng món.</p>
+</div>
+<div class="paragraph">
+<p>Kỹ thuật này hiệu quả vì nó tận dụng sức mạnh của hình ảnh và liên kết. Bằng cách gán từng mục với một vị trí cụ thể trong bản đồ tinh thần, bạn tạo ra một biểu tượng hình ảnh và không gian về thông tin trong tâm trí. Điều này giúp bạn dễ dàng nhớ lại thông tin sau đó vì não đã hình thành các liên kết mạnh mẽ giữa các mục và vị trí. Với thực hành, bạn có thể dùng kỹ thuật này để nhớ cả danh sách dài các mục và gây ấn tượng với bạn bè, đồng nghiệp về kỹ năng nhớ mới của mình.</p>
+</div>
+<div class="paragraph">
+<p><strong>Phương pháp Nhóm thông tin (Chunking)</strong></p>
+</div>
+<div class="paragraph">
+<p>Nhóm thông tin là một kỹ thuật để ghi nhớ thông tin bằng cách chia nhỏ thành từng phần nhỏ hơn, giúp dễ nhớ hơn. Ví dụ, nếu bạn cần ghi nhớ một số điện thoại, bạn có thể chia nó thành ba nhóm số như 555-123-4567. Điều này làm cho việc nhớ dễ hơn vì dễ nhớ ba nhóm nhỏ hơn là một chuỗi dài các chữ số.</p>
+</div>
+<div class="paragraph">
+<p>Một ví dụ khác của phương pháp này là chia một khái niệm lớn thành các phần nhỏ, dễ quản lý hơn. Chẳng hạn, nếu bạn đang học một ngôn ngữ lập trình mới, bạn có thể bắt đầu bằng cách chia nó thành các thành phần nhỏ như cú pháp, kiểu dữ liệu và cấu trúc điều khiển. Sau khi nắm vững các phần nhỏ này, bạn có thể bắt đầu ghép chúng lại để có cái nhìn tổng thể về ngôn ngữ.</p>
+</div>
+<div class="paragraph">
+<p>Nhóm thông tin hiệu quả vì nó giúp não xử lý và lưu trữ thông tin dễ dàng hơn. Khi thông tin được trình bày dưới dạng các phần nhỏ, dễ quản lý hơn, não bộ sẽ dễ dàng xử lý và ghi nhớ. Ngoài ra, phương pháp này giúp tạo ra các liên kết có ý nghĩa giữa các phần thông tin, giúp dễ dàng nhớ lại sau này.</p>
+</div>
+<div class="paragraph">
+<p>Để sử dụng nhóm thông tin hiệu quả, điều quan trọng là phải tập trung hoàn toàn vào nhiệm vụ, sau đó nắm được bức tranh tổng thể và các ý chính. Bạn có thể đi nhanh qua tài liệu, và bất kỳ điều gì nổi bật thường là quan trọng. Bạn cũng nên cung cấp bối cảnh cho các ý tưởng và khái niệm để biết khi nào nên sử dụng chúng. Cuối cùng, hãy gắn kết trí nhớ của bạn với việc nói lớn ra để tự giải thích.</p>
+</div>
+<div class="paragraph">
+<p>Nhìn chung, nhóm thông tin là một kỹ thuật mạnh mẽ giúp học tập và ghi nhớ vì nó làm cho thông tin dễ quản lý và xử lý hơn. Bằng cách chia các khái niệm lớn thành các phần nhỏ, dễ quản lý hơn, bạn có thể làm cho não dễ xử lý và lưu trữ thông tin hơn, giúp dễ dàng nhớ lại sau này.</p>
+</div>
+<div class="sect2">
+<h3 id="đánh-bại-sự-trì-hoãn"><a class="anchor" href="#đánh-bại-sự-trì-hoãn"></a><strong>Đánh bại Sự Trì Hoãn</strong></h3>
+<div class="paragraph">
+<p>Sự trì hoãn là một hiện tượng thú vị mà hầu như ai cũng từng trải qua theo một cách nào đó. Nó giống như một con quái vật tiềm ẩn trong não của chúng ta, luôn sẵn sàng nhảy bổ ra mỗi khi chúng ta cần hoàn thành một việc gì đó. Khi đối mặt với một nhiệm vụ mà chúng ta không muốn làm, não bộ sẽ liên tưởng nó với cảm giác đau đớn, khó chịu và căng thẳng. Giống như não đang báo cho chúng ta biết rằng công việc này sẽ rất khó và chúng ta sẽ phải nỗ lực rất nhiều để hoàn thành. Điều này là do vỏ não trước trán – phần não chịu trách nhiệm ra quyết định và kiểm soát nhận thức – chịu trách nhiệm điều chỉnh hành vi liên quan đến mục tiêu. Khi đối mặt với một nhiệm vụ khó khăn, vỏ não trước trán gửi tín hiệu tới amygdala – phần não liên quan đến cảm xúc – để kích hoạt phản ứng căng thẳng. Phản ứng căng thẳng này kích hoạt sự giải phóng cortisol, một hormone liên quan đến phản ứng căng thẳng của cơ thể, và tạo ra cảm giác khó chịu trong cơ thể. Đây là cảm giác mà chúng ta nhận biết là đau đớn, và cũng là lý do khiến việc vượt qua sự trì hoãn trở nên rất khó khăn.</p>
+</div>
+<div class="paragraph">
+<p>Để làm mọi thứ thêm phức tạp, não bộ của chúng ta được lập trình để tìm kiếm sự thoải mái và tránh xa cảm giác đau đớn. Khi chúng ta trì hoãn, chúng ta quay sang các hoạt động mang lại sự thoải mái tức thì như lướt mạng xã hội hoặc xem TV. Những hoạt động này giải phóng dopamine, một chất dẫn truyền thần kinh liên quan đến khoái cảm và phần thưởng. Bộ não của chúng ta sau đó bắt đầu liên kết sự trì hoãn với khoái cảm, làm cho nó càng khó vượt qua hơn.</p>
+</div>
+<div class="paragraph">
+<p>Vậy, làm thế nào để đánh bại sự trì hoãn?</p>
+</div>
+<div class="paragraph">
+<p>Để đánh bại sự trì hoãn, quan trọng là hiểu vòng lặp thói quen bao gồm tín hiệu, thói quen, phần thưởng và niềm tin. Khi đã xác định được tín hiệu và phần thưởng dẫn dắt thói quen trì hoãn của mình, bạn có thể phát triển các chiến lược để thay thế chúng. Ví dụ, nếu tín hiệu để trì hoãn là việc kiểm tra mạng xã hội, bạn có thể xóa ứng dụng mạng xã hội khỏi điện thoại hoặc chặn nó trong một số khoảng thời gian nhất định trong ngày. Nếu phần thưởng của sự trì hoãn là xem TV, bạn có thể tự thưởng cho mình một tập phim yêu thích sau khi hoàn thành một nhiệm vụ.</p>
+</div>
+<div class="paragraph">
+<p>Kỹ thuật này hiệu quả vì nó giúp tái cấu trúc các con đường thần kinh liên quan đến sự trì hoãn. Bằng cách thay đổi các tín hiệu và phần thưởng, bạn có thể thay đổi hành vi liên quan đến thói quen đó. Ngoài ra, bằng cách phát triển các thói quen và lối sống mới, bạn có thể làm mạnh thêm các con đường thần kinh liên quan đến những hành vi này, làm cho chúng trở nên tự động và dễ thực hiện hơn theo thời gian. Với việc thực hành, bạn có thể học cách vượt qua thói quen trì hoãn và phát triển các thói quen hiệu quả hơn để giúp bạn đạt được mục tiêu của mình.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="kỹ-thuật-pomodoro"><a class="anchor" href="#kỹ-thuật-pomodoro"></a>Kỹ thuật Pomodoro</h3>
+<div class="paragraph">
+<p>Kỹ thuật Pomodoro là một phương pháp quản lý thời gian liên quan đến việc chia công việc thành các khoảng 25 phút, gọi là "pomodoros," sau đó nghỉ 5 phút. Sau bốn pomodoros, hãy nghỉ một khoảng thời gian dài hơn khoảng 15-30 phút. Tuy nhiên, bạn không cần tuân thủ đúng các thời gian này và có thể điều chỉnh chúng sao cho phù hợp với nhu cầu của bạn.</p>
+</div>
+<div class="paragraph">
+<p>Kỹ thuật Pomodoro hiệu quả vì nó giúp bạn tập trung và tránh sự phân tâm. Bằng cách chia công việc thành các khoảng thời gian quản lý được, bạn ít có khả năng bị choáng ngợp hoặc mất tập trung. Ngoài ra, các quãng nghỉ giúp não bạn nghỉ ngơi và hồi phục, giúp dễ dàng duy trì năng suất trong suốt cả ngày.</p>
+</div>
+<hr>
+</div>
+<div class="sect2">
+<h3 id="các-lựa-chọn-lối-sống-cải-thiện-trí-nhớ"><a class="anchor" href="#các-lựa-chọn-lối-sống-cải-thiện-trí-nhớ"></a>Các Lựa Chọn Lối Sống Cải Thiện Trí Nhớ</h3>
+
+</div>
+<div class="sect2">
+<h3 id="thể-dục"><a class="anchor" href="#thể-dục"></a>Thể Dục</h3>
+<div class="paragraph">
+<p>Thể dục đã được chứng minh có nhiều lợi ích cho sức khỏe não bộ và chức năng nhận thức, bao gồm cải thiện trí nhớ. Một lý thuyết là thể dục làm tăng lưu lượng máu và oxy lên não, giúp nuôi dưỡng các tế bào não và thúc đẩy sự phát triển của các nơ-ron mới. Ngoài ra, thể dục còn giúp tăng sản xuất các hóa chất trong não, như yếu tố thần kinh có nguồn gốc từ não (BDNF), rất quan trọng cho sự phát triển và tồn tại của nơ-ron.</p>
+</div>
+<div class="paragraph">
+<p>Để hiệu quả nhất, hãy tham gia vào các bài tập tim mạch như chạy, đạp xe, bơi lội hoặc đi bộ nhanh, ít nhất 30 phút mỗi ngày hầu hết các ngày trong tuần.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="thiền"><a class="anchor" href="#thiền"></a>Thiền</h3>
+<div class="paragraph">
+<p>Thiền là một công cụ mạnh mẽ giúp cải thiện trí nhớ và chức năng nhận thức. Nghiên cứu gần đây cho thấy thiền có thể thực sự thay đổi cấu trúc của não, cải thiện trí nhớ và khả năng tập trung. Một nghiên cứu đã phát hiện rằng những người thiền 10 phút mỗi ngày trong hai tuần đã có sự cải thiện đáng kể về trí nhớ làm việc và chức năng điều hành.</p>
+</div>
+<hr>
+</div>
+<div class="sect2">
+<h3 id="các-loại-thực-phẩm-tốt-cho-não-bộ"><a class="anchor" href="#các-loại-thực-phẩm-tốt-cho-não-bộ"></a>Các Loại Thực Phẩm Tốt Cho Não Bộ</h3>
+<div class="paragraph">
+<p>Ăn một số loại thực phẩm có thể thúc đẩy sức khỏe não bộ và cải thiện trí nhớ. Ví dụ, việt quất chứa nhiều chất chống oxy hóa giúp bảo vệ tế bào não khỏi tổn thương, cá hồi giàu axit béo omega-3 giúp hỗ trợ chức năng não, và các loại hạt như hạnh nhân, óc chó chứa vitamin E giúp ngăn ngừa suy giảm nhận thức và tăng cường trí nhớ.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="giấc-ngủ"><a class="anchor" href="#giấc-ngủ"></a>Giấc Ngủ</h3>
+<div class="paragraph">
+<p>Ngủ đủ giấc rất quan trọng cho sự củng cố trí nhớ và chức năng nhận thức. Để hiệu quả nhất, hãy thiết lập một lịch ngủ đều đặn và tránh các hoạt động gây kích thích trước khi đi ngủ, như xem TV hoặc sử dụng thiết bị điện tử. Trong khi ngủ, não xử lý và củng cố ký ức, giúp dễ dàng ghi nhớ những gì đã học và tạo mối liên hệ giữa các thông tin khác nhau.</p>
+</div>
+<div class="paragraph">
+<p>Người da vàng thường có chiều huớng suy nghĩ phức tạp, đấy không hẳn là dấu hiệu của sự thông minh, nhiều khi trong óc toàn bã mà cứ suốt ngày âm mƣu tính toán ma  quỷ kế đến đêm không ngủ mà trong đầu cứ suy nghĩ vòng vòng. Người da đen có chiều huớng suy nghĩ đơn giản, đấy không phải là trí tuệ của họ kém hơn mà phần lớn họ ít tính toán âm mƣu, tâm tình họ chất phát thực thà đến đêm họ chỉ cần nằm xuống giƣờng là ngủ. Nếu nói về tập luyện thân thể chỉ cần tâm tính đơn giản, có thể chịu khổ là chắc chắn có thành tựu. Ngủ là biện pháp hồi phục tốt nhất cho cả thể chất lẫn tinh thần, ngƣời suy nghĩ phức tạp rất khó ngủ và ngủ rất ít nên cơ thể cũng hư nhuợc hơn nếu so sánh với ngƣời đƣợc nghỉ ngơi đầy đủ. Muốn trị cái tật cứ suy nghĩ liên miên không ngủ đuợc có ba cách:</p>
+</div>
+<div class="paragraph">
+<p>thứ nhất là tập cách đoạn trừ suy nghĩ, đó không phải là cố gắng không suy tƣ về bất cứ chuyện gì mà phải đem toàn bộ tinh thần tập trung vào một cái gì đó, giống nhƣ hơi thở hai một điểm nào đó chẳng hạn, lúc ấy sẽ không suy nghĩ lung tung nữa . Người phương tây gọi đó là self-control, khả năng kiểm soát bản thân mình, ngƣời phương đông ấn độ hay Trung Quốc có thành ngữ " hàng phục hắn tâm", tức là xem tâm nhƣ một monkey-mind, tâm cứ nhảy nhót lung tung không định đƣợc. Chuyện self-control này có thể ví dụ nếu đem một hòm vàng đi dụ một nhà sƣ nhƣng ông ta kiểm soát đƣợc tâm mình nên không thèm nhận, chính loại sƣ đó đến đêm chỉ cần nằm xuống cho cơ thể bất động 10 phút là họ ngủ vì họ có thể hàng phục tâm mình không tiếp tục suy nghĩ nữa.</p>
+</div>
+<div class="paragraph">
+<p>thứ hai là tập luyện để bài tiết muối trong cơ thể qua mồ hôi, muối là chất cần để "fire electric signals" trong cơ thể, nói đơn giản là các nerves dùng muối làm chất xúc tác truyền tín hiệu từ não đến các cơ quan . Về sinh lý học chỉ cần muối ít, adenosine nhiều do khi vận động bẻ ATP thì cơ thể sẽ tự động lâm vào trạng thái buồn ngủ. Nằm xuống cố gắng để cơ thể bất động không di chuyển tay chân cũng là một cách giúp não dừng truyền tín hiệu đến những cơ quan này. Có một cơ chế khác là lúc bình thƣờng 70% máu đƣợc chứa ở mạch vein, khi ngủ càng cần ít máu ở mạch artery và nhiều máu ở mạch viền hơn để hạ nhiệt độ cơ thể xuống nên sáng ra người thường thấy lạnh là vậy, còn lúc tập thấy ngƣời nóng bừng bừng là do bơm máu đến các cơ quan khác nhau, nếu không ngủ đƣợc nên chú ý nhiệt độ bên ngoài và nhiệt độ cơ thể (nhiệt độ bên ngoài 70 độ f hay 21 độ c là lý tƣởng nhất với ngƣời sống lâu năm ở vùng bắc Mỹ, người sống ở vùng gần xích đạo có lẽ cao hơn một tí).</p>
+</div>
+<div class="paragraph">
+<p>thứ ba là chỉ ăn lượng muối vừa đủ không ăn nhiều hơn sẽ giúp tâm lý ổn định, cơ thể ít muối dễ ngủ. Ngƣời ta nói ăn mắm nói bậy cũng là có lý do, ăn nhiều loại thức ăn thuộc loại muối thối này đếm đêm sẽ có dƣ chất xúc tác để thức rồi suy nghĩ loạn động liên tục đến không ngủ khiến cơ thể và tinh thần ngày càng hư nhược.</p>
+</div>
+<hr>
+<div class="paragraph">
+<p>Ngày mình ngủ buổi tối khoảng 8 h, buổi trƣa khoảng 12-1 giờ gần 40 phút buổi chiều gần 5-6 h khoảng thêm 40 phút nữa.</p>
+</div>
+<div class="paragraph">
+<p>Nhiều người nói mình lười nhất là bà chị của mẹ mình tánh đàn bà rất độc miệng, nếu không phải tại bả xúi thì chƣa chắc mẹ mình đi chọc phá giấc không qua mình ngủ, mình làm cái gì cũng có lý do, chỉ là không tiện giải thích và hơn nữa không rảnh đi giải thích cho ngƣời không có trình độ vì nói xong mình biết chắc họ cũng không hiểu gì cả. Nhƣng nói ngắn gọn thì đi phá giấc ngủ của mình là trò nghịch dại ngu học nhất mình từng đụng phải, vì làm thế không khác gì giết mình.</p>
+</div>
+<div class="paragraph">
+<p>Các giấc ngủ giúp mình giải quyết 2 vấn đề chính đó là Adenosine bị "stack up" và amyloid- beta ( một loại protein gồm khoảng 43 amino-acids ) "stack-up" trong khi mình tỉnh. Khi ngủ thì não mới dọn dẹp 2 loại này.</p>
+</div>
+<div class="paragraph">
+<p>Các giấc ngủ giúp mình giải quyết 2 vấn đề chính đó là Adenosine bị "stack up" và amyloid- beta ( một loại protein gồm khoảng 43 amino-acids ) "stack-up" trong khi mình tỉnh. Khi ngủ thì não mới dọn dẹp 2 loại này.</p>
+</div>
+<div class="paragraph">
+<p>Thứ nhất là khi tập luyện thì adenosine bị gia tăng vì nó là một loại by-product khi mình dùng năng lƣợng trong cơ thể ( ATP), tức là khi mình tập càng nặng và dùng càng nhiều năng lƣợng thì chất này càng gia tăng khiến cơ thể mệt mỏi và một giấc ngủ trƣa ngoài ngủ buổi tối giúp dọn một phần này ra để mình có thể tỉnh táo trong phần còn lại của ngày.</p>
+</div>
+<div class="paragraph">
+<p>Thứ hai là khi mình đọc sách hay làm cái gì liên quan tới trí não thì cái protein amyloid-beta này gia tăng khá nhanh. Ngƣời bình thƣờng ít đọc sách vừa đọc vài trang cảm thấy buồn ngủ cũng là vì lý do này, không phải là do sách chán mà khi não tiếp nhận một lƣợng thông tin đủ lớn để nó quá tải thì chất này sẽ gia tăng gây cảm giác buồn ngủ. Giấc ngủ giúp dọn dẹp chất này và giúp não sắp xếp và sàng lọc thông tin. Con ngƣời thông qua lymphatic system để dọn dẹp chất thải, nhƣng cứ nhìn hình này sẽ hiểu:</p>
+</div>
+<div class="paragraph">
+<p>[<a href="http://lymphaticsystem.organsofthebody.com/…/lymphatic-syst…" class="bare">http://lymphaticsystem.organsofthebody.com/…/lymphatic-syst…</a>](<a href="http://lymphaticsystem.organsofthebody.com/%E2%80%A6/lymphatic-syst%E2%80%A6" class="bare">http://lymphaticsystem.organsofthebody.com/%E2%80%A6/lymphatic-syst%E2%80%A6</a>) Não ngƣời không dùng lymphatic system để dọn chất thải của nó. Chỉ khi ngủ thì não mới nhăn lại tạo khoảng trống cho cái gọi CSF ( cerebrospinal fluid ) thông mạch blood vessel vào dọn dẹp những chất nhƣ amyloid-beta protein này. Tuy mình giờ không tệ nhƣ hồi xƣa chỉ cần đọc chục trang là muốn buồn ngủ, "loại thể lực này" gia tăng nhiều sau vài năm đọc sách&#8230;&#8203; nhƣng cho dù là vậy thì sau khoảng vài giờ đọc những thứ infomation dense nhất là khi dùng phần mềm dạng speed reader  [<a href="https://play.google.com/store/apps/details…" class="bare">https://play.google.com/store/apps/details…</a>](<a href="https://play.google.com/store/apps/details%E2%80%A6" class="bare">https://play.google.com/store/apps/details%E2%80%A6</a>) cứ bỏ một đoạn text vào app trong điện thoại(đấy là lý do nhiều ngƣời thấy mình hay ôm điện thoại hay tablet để đọc ebook) thì nó hiện liên tục 2000 chữ một phút trên màn hình, đọc kiểu này tuy khiến tốc độ đọc nhanh hơn nhưng làm khoảng 20 phút là mình bắt đầu mệt &#8230;&#8203;. cứ sau 2-3h đọc sách là mình làm một cú đọc marathon thế này để "tập luyện" sau khi làm xong sẽ cảm thấy mệt thì mình làm một giấc 40 phút.</p>
+</div>
+<div class="paragraph">
+<p>Về cái amyloid-beta này nếu mà stack up nhiều quá sẽ dẫn đến tình trạng bệnh alzheimer khi về già, nếu không đƣợc ngủ đầy đủ để dọn adenosine với amyloid-beta ra thì mình không thể tập và đọc trong tình trạng tốt nhất.</p>
+</div>
+<hr>
+<div class="paragraph">
+<p>Cách để có giấc ngủ ngon</p>
+</div>
+<div class="paragraph">
+<p>Tạm thời không cần ghi note,vì không cần hình ảnh minh họa &#8230;&#8203; với lại mình chỉ đang thử 4-5 ngày, chưa được hết một tuần. Nhƣng đã có thể nhắm mắt lại và đi ngủ bất cứ lúc nào, bất cứ nơi nào mình muốn. Chƣơng trình : ngày 1 và 2</p>
+</div>
+<div class="paragraph">
+<p>buổi sáng: thức dậy 4h30 sáng, uống nƣớc + đi vệ sinh xong chạy bộ 3km thật nhanh hoặc chạy jogging 6.5-9.5km</p>
+</div>
+<div class="paragraph">
+<p>sau đó làm 200 đến 500 reps mỗi loại push up ( chia ra nhiều set và nghỉ chừng 3 phút/ set ), squat không dùng tạ, pull up</p>
+</div>
+<div class="paragraph">
+<p>ăn bữa thứ nhất, thật nhiều đạm động vật, carbs, rau, healthy fat, nhiều hết mức có thể. -nghỉ 1h30 phút ( có thể ngủ nap 30-40 phút, vặn đồng hồ canh giờ), sau đó đeo ba lô nặng từ 9 đến 18 kg đi bộ 12.8-15km.</p>
+</div>
+<div class="paragraph">
+<p>ăn trưa một buổi thật giàu calories, đạm, carbs, healthy fat, sau đó nghỉ 2h (có thể ngủ nap 30-40 phút, vặn đồng hồ canh giờ).</p>
+</div>
+<div class="paragraph">
+<p>chạy nhanh 3 km sau đó tập tạ hoặc calisthenic 45-60 phút</p>
+</div>
+<div class="paragraph">
+<p>ăn tối, một bữa lớn nữa, sau đó nghỉ 30 phút.</p>
+</div>
+<div class="paragraph">
+<p>làm việc nhà, ( quét nhà, giặt đồ, rửa chén.. ) trong một giờ hoặc đi bộ 2 h.</p>
+</div>
+<div class="paragraph">
+<p>đến 10 giờ 30 phút đi ngủ, bạn sẽ có một giấc ngủ sâu nhất trong cuộc đời bạn Ngày 3, test khả năng ngủ, 90% lính từng phục vụ trong quân đội Mỹ và Israel, học đƣợc kĩ năng ngủ bất cứ khi nào có thể chợp mắt chỉ trong 2 ngày. Sau đó muốn chắc ăn và lâu dài bạn có thể làm theo lịch này thêm 4 ngày nữa, nhƣng khá tốn thời gian. Không cần làm theo nếu muốn, nhƣng cứ cách 1 tháng thì làm 2 ngày nhƣ vầy. *chƣơng trình có khá nhiều cardio, nhƣng chỉ kéo dài 2-7 ngày và vẫn ăn đủ + cộng tập tạ nên không mất cơ nhiều. Tối ngủ sâu rất sảng khoái.</p>
+</div>
+<div class="paragraph">
+<p>cần uống 3-6 lít nuớc vì khát .</p>
+</div>
+<div class="paragraph">
+<p>Phải hiểu rõ não ngƣời là một mắc xích quan trọng trong guồng máy của cơ thể, chỉ cần giảm đi một hai độ là bạn chìm vào giấc ngủ. Nguời sống ở khí hậu lạnh ngủ ngon hơn, duỡng ra trí lực thể lực khỏe mạnh hơn cũng là nhờ vậy. Ở thời hiện đại thì ta có máy điều hoà và quạt để bù lại cho khí hậu nóng ẩm, chỉ cần nhiệt độ 26-27 độ và quạt vào ngƣời là khá đủ hoặc 22-23 độ và không quạt. Ngoài ra còn một số trick nhƣ tắm nƣớc nóng rồi vào phòng cool down thân nhiệt cơ thể xuống cho dễ ngủ. Nhiệt độ cực kì quan trọng cho giấc ngủ sâu(nhớ đắp mền mỏng giữ ấm bụng, bàn tay, bàn chân).</p>
+</div>
+<div class="paragraph">
+<p>Môi trường ( environment) cảnh vật xung quanh luôn ảnh hƣởng tâm sinh lý của bạn, ở đây không phải là phong thủy mà là thuyết tiến hoá của Darwin. Chọn nơi an toàn, không xa lạ, yên tĩnh và tránh ánh sáng sẽ giúp cải thiện chất lƣợng giấc ngủ rõ rệt. Về những chất sedative cho dễ ngủ nhƣ rƣợu, cần sa&#8230;&#8203; Người bình thuờng cần tránh vì nó block đi REM sleep của họ khiến một vài tháng sau REM xuất hiện trong thời gian họ tỉnh khiến họ không phân biệt đƣợc mơ thật, nghe subconsciousness tức là nhân vật trong mơ nói chuyện là triệu chứng nặng nhƣng nhẹ thì vẫn vài biến chứng u u mê mê. Riêng đối với ngƣời có khả năng Lucid dream nhƣ mình mà dùng thêm Tren nữa thì REM lại xuất hiện trong giấc ngủ quá nhiều mà chất lƣợng hình ảnh lại cực kì vivid rõ ràng nên nhiều lúc mình phải dùng cần sa để block bớt REM sleep đi.</p>
+</div>
+<div class="paragraph">
+<p>Ngoài ra truớc khi ngủ phải để hai quyển note. Một quyển là dream journal ghi lại những gì xảy ra trong mơ để sáng hôm sau vừa thức dậy sẽ quên sau 30s. Một quyển là để ghi ra 2-3 vấn đề mình suy nghĩ không thông rồi đi ngủ vì trong giấc ngủ đại não sẽ tự động sàn lọc xử lý lại thông tin và giúp ta tìm ra kiến giải. Thêm cái quan trọng nữa là phải ghi ra 3 cái khiến ta "biết ơn" trong ngày để các subconsciousness hiểu giá trị quan trọng của bản tâm và hình thành liên kết.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="kết-luận-6"><a class="anchor" href="#kết-luận-6"></a>kết luận</h3>
+<div class="paragraph">
+<p>Vượt qua sự trì hoãn liên quan đến việc hiểu vòng lặp thói quen, nhận ra các tác nhân gây trì hoãn và phát triển chiến lược để vượt qua chúng. Bằng cách sử dụng các kỹ thuật như nhật ký, chia khung thời gian, và bắt đầu với các nhiệm vụ khó nhất, bạn có thể tập trung hơn và tiến bộ trong việc đạt được mục tiêu học tập của mình.</p>
+</div>
+<hr>
+</div>
+<h1 id="tools-mình-đang-dùng" class="sect0"><a class="anchor" href="#tools-mình-đang-dùng"></a>tools mình đang dùng</h1>
+<div class="ulist">
+<ul>
+<li>
+<p>take notes : cursor Ai +affine</p>
+</li>
+<li>
+<p>coding :cursor Ai + intelji + visual studio +arduino IDE</p>
+</li>
+<li>
+<p>pdf:wondershare pdf element</p>
+</li>
+<li>
+<p>mindmap :xmind</p>
+</li>
+<li>
+<p>searching :listary</p>
+</li>
+</ul>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2024-11-19 18:53:43 +0700
+</div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>
+<script>
+if (!hljs.initHighlighting.called) {
+  hljs.initHighlighting.called = true
+  ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+}
+</script>
+</body>
+</html>
